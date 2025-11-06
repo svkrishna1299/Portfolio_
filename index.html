@@ -167,7 +167,7 @@
           <!-- Each section gets will-up for fade-up -->
           <section class="will-up">
             <h3 class="text-2xl font-bold mb-4">Aim</h3>
-            <p>Analyse unsteady aerodynamics of a rigid fruit-fly wing in hover, focusing on how passive/active pitch, stroke &amp; elevation affect performance.</p>
+            <p>This project reproduces the <strong>hovering wing-beat of the fruit fly</strong> to explore the biomechanics of insect flight.  Using published kinematic data, we reconstructed the wing’s stroke, pitch and elevation motions via <em>Fourier-series</em> time‑series and imported a <em>2.5&nbsp;mm</em> rigid wing geometry from literature.  Our goal was to understand which degrees of freedom are actively controlled versus passively driven by the aerodynamics – insight that informs <em>micro‑air‑vehicle</em> design and fundamental biomechanics.</p>
           </section>
 
           <section class="will-up">
@@ -190,19 +190,19 @@
                     </tr>
                     <tr>
                       <td class="py-4 font-medium">Domain</td>
-                      <td class="py-4">Dual-zone layout: large quiescent background + spherical overset region enclosing the flapping wing</td>
+                      <td class="py-4">Dual‑zone layout: a quiescent background eight times the wing span in each dimension and a spherical <em>overset</em> region that translates and rotates with the wing; overset–background interface handled with hole‑cutting and adaptive refinement</td>
                     </tr>
                     <tr>
                       <td class="py-4 font-medium">Meshing</td>
-                      <td class="py-4">Uniform 0.1 mm base; 0.005 mm minimum near the wing; adaptive mesh refinement keeps interface quality</td>
+                      <td class="py-4">Uniform 0.1&nbsp;mm base mesh in the background; minimum cell size 0.005&nbsp;mm near the wing; adaptive mesh refinement (AMR) and hole‑cutting ensure a smooth overset interface throughout the flapping cycle</td>
                     </tr>
                     <tr>
                       <td class="py-4 font-medium">Motion</td>
-                      <td class="py-4">Root translation via “Trajectory” frame; yaw, pitch, roll super-imposed as local frames driven by time-series scalars</td>
+                      <td class="py-4">Trajectory‑based translation of the wing root combined with superimposed yaw, pitch and roll rotations; motions defined using time‑series tables of Euler angles derived from Fourier‑series fits to literature kinematics</td>
                     </tr>
                     <tr>
                       <td class="py-4 font-medium">Solver</td>
-                      <td class="py-4">Incompressible, low-Re k-ω URANS; implicit Δt = 4.58 µs (1/1000 cycle); eight full cycles on HPC cluster</td>
+                      <td class="py-4">Low-Reynolds-number incompressible URANS (k‑ω SST); implicit solver with Δt&nbsp;= 4.58&nbsp;µs (1/1000 of the 218&nbsp;Hz wing‑beat period); eight cycles simulated using high‑performance computing (HPC) resources</td>
                     </tr>
                   </tbody>
                 </table>
@@ -226,11 +226,12 @@
           </section>
 
           <section class="will-up">
-            <h3 class="text-2xl font-bold mb-4">Key Results</h3>
+            <h3 class="text-2xl font-bold mb-4">Key Contributions &amp; Results</h3>
             <ul class="list-disc pl-6 space-y-2">
-              <li>Avg lift ≈ 5.7 µN → L/W ≈ 1 (hovering ✅)</li>
-              <li>Pitch reversals + elevation peaks smooth AoA transitions</li>
-              <li>Moment hysteresis loops show active muscle contribution</li>
+              <li><strong>Role:</strong> Developed time‑series kinematic dataset and defined coordinate systems to prescribe translation and rotation; built dual‑zone overset mesh and configured STAR‑CCM+ solver; executed simulations on a multi‑node HPC cluster and post‑processed aerodynamic loads.</li>
+              <li><strong>Performance:</strong> Achieved an average lift of <em>5.76&nbsp;µN</em> per wing, yielding a lift‑to‑weight ratio ≈&nbsp;1 for hovering; drag averaged <em>0.8&nbsp;µN</em> – validating the fidelity of the model.</li>
+              <li><strong>Aerodynamic behaviour:</strong> Observed smooth angle‑of‑attack transitions via pitch reversals and elevation peaks; identified that <em>stroke and pitch motions require active muscle input</em>, while elevation is partially passive.</li>
+              <li><strong>Insights:</strong> Generated hysteresis loops of pitching and stroke moments to quantify energy exchange; findings contribute to the understanding of insect flight mechanics and inform the design of biomimetic micro‑air vehicles.</li>
             </ul>
             <p class="mt-6">
               <a href="./FSI/Fluid_Structure_Interaction.pdf" target="_blank" class="text-teal-600 hover:underline">Full technical report ↗</a>
