@@ -1,328 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Raj Gopala Krishna S V | Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raj Gopala Krishna S.V — CFD & ML Engineer</title>
+  <meta name="description" content="Mechanical Engineer specialising in CFD, turbulence modelling, and machine learning. Based in Göteborg, Sweden." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS (for landing sections) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-    <style>
-      /* ---------- Base ---------- */
-      body{
-        background-image:
-          linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),
-          linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);
-        background-size:40px 40px;
-      }
-      html{scroll-behavior:smooth}
-      .no-scrollbar::-webkit-scrollbar{display:none}
-
-      /* ---------- Animations ---------- */
-      @keyframes zoomFade {
-        from { transform: scale(.96); opacity: 0 }
-        to   { transform: scale(1);   opacity: 1 }
-      }
-      @keyframes slideInLeft {
-        from { transform: translateX(-28px); opacity: 0 }
-        to   { transform: translateX(0);     opacity: 1 }
-      }
-      @keyframes fadeUp {
-        from { transform: translateY(14px); opacity: 0 }
-        to   { transform: translateY(0);     opacity: 1 }
-      }
-      /* Play these when overlay opens */
-      #projectOverlay.play-anim .will-zoom  { animation: zoomFade .38s cubic-bezier(.2,.8,.25,1) both }
-      #projectOverlay.play-anim .will-left  { animation: slideInLeft .42s cubic-bezier(.2,.8,.25,1) both }
-      #projectOverlay.play-anim .will-up    { animation: fadeUp .42s cubic-bezier(.2,.8,.25,1) both }
-      /* Little stagger for consecutive elements */
-      #projectOverlay.play-anim .will-up:nth-of-type(1) { animation-delay: .05s }
-      #projectOverlay.play-anim .will-up:nth-of-type(2) { animation-delay: .10s }
-      #projectOverlay.play-anim .will-up:nth-of-type(3) { animation-delay: .15s }
-      #projectOverlay.play-anim .will-up:nth-of-type(4) { animation-delay: .20s }
-
-      /* Hover micro-interactions */
-      .lift:hover{ transform: translateY(-2px) }
-      .lift, .lift img{ transition: transform .2s ease, box-shadow .2s ease, filter .2s ease }
-      .chip{ transition: transform .18s ease, background-color .18s ease }
-      .chip:hover{ transform: translateY(-1px) }
-      .thumb:hover{ filter: contrast(1.04) saturate(1.02) }
-    </style>
-  </head>
-
-  <body class="text-slate-800 selection:bg-teal-200/60">
-
-    <!-- NAV -->
-    <nav class="fixed inset-x-0 top-0 z-40 bg-white/90 backdrop-blur flex items-center justify-between px-6 py-4 border-b border-slate-200">
-      <a href="#top" class="text-lg font-bold tracking-wide">Raj Gopala</a>
-      <ul class="hidden md:flex gap-8 font-medium text-sm">
-        <li><a href="#projects" class="hover:text-teal-600">Projects</a></li>
-        <li><a href="#about" class="hover:text-teal-600">About</a></li>
-        <li><a href="#contact" class="hover:text-teal-600">Contact</a></li>
-        <li><a href="./Resume-10.pdf" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Résumé</a></li>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">RGK</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
-    </nav>
-    <div class="h-16" id="top"></div>
-
-    <!-- HERO -->
-    <header class="py-24" data-aos="fade-up">
-      <div class="mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:justify-between">
-        <div class="max-w-xl">
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Mechanical Engineer &amp; CFD Specialist</h1>
-          <p class="mt-6 text-lg leading-relaxed">
-            I design, simulate &amp; optimise
-            <span class="font-medium text-teal-600">fluid-dynamic systems</span> — blending physics-based modelling with machine learning.
-          </p>
-          <div class="mt-8 flex gap-4">
-            <a href="#projects" class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium hover:bg-teal-700 transition">See my work</a>
-            <a href="./Resume-10.pdf" target="_blank" rel="noopener" class="rounded-md border border-teal-600 px-6 py-3 font-medium text-teal-600 hover:bg-teal-50 transition">Download CV</a>
-          </div>
-        </div>
-        <img src="./FSI/images/Main_Pic.png" alt="Fruit-fly CFD" class="hidden lg:block w-72 lg:translate-y-[-20px]" />
-      </div>
-    </header>
-
-    <!-- PROJECT CARD -->
-    <section id="projects" class="py-24 bg-white/80 backdrop-blur-sm" data-aos="fade-up">
-      <div class="mx-auto max-w-7xl px-6">
-        <h2 class="text-3xl font-extrabold mb-12">Featured Project</h2>
-
-        <article id="projectCard"
-                 class="lift group cursor-pointer overflow-hidden rounded-3xl bg-white shadow-lg
-                        ring-1 ring-teal-300/40 hover:ring-teal-400 transition
-                        max-w-3xl mx-auto text-center">
-          <div class="bg-white flex justify-center p-6">
-            <img src="./FSI/images/Main_Pic.png" alt="CFD simulation still"
-                 class="w-[85%] max-w-lg h-auto object-contain" />
-          </div>
-          <div class="px-6 pb-10">
-            <h3 class="text-2xl font-bold text-teal-800 group-hover:text-teal-600 transition mb-4">
-              CFD Simulation of Fruit-Fly Wing-Beat Motion
-            </h3>
-            <div class="flex flex-wrap justify-center gap-2 mb-6">
-              <span class="chip rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">CFD</span>
-              <span class="chip rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">FSI</span>
-              <span class="chip rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">STAR-CCM+</span>
-              <span class="chip rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">Overset Mesh</span>
-            </div>
-            <a class="font-medium text-teal-600 group-hover:underline">Explore →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="py-24" data-aos="fade-up" data-aos-delay="100">
-      <div class="mx-auto max-w-4xl px-6">
-        <h2 class="text-3xl font-extrabold mb-6">About Me</h2>
-        <p class="leading-relaxed text-lg">
-          I’m Raj, completing an M.Sc. in Applied Mechanics at Chalmers (CFD &amp; Turbulence).
-          From bird-inspired micro-AV research to HVAC optimisation with AI, my work marries physics and data.
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-24 bg-white/80 backdrop-blur-sm" data-aos="fade-up">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <h2 class="text-3xl font-extrabold mb-6">Let’s build something together</h2>
-        <p>Have an idea needing simulation insight—or just want to chat fluid dynamics? Drop a line.</p>
-        <div class="mt-8 flex justify-center gap-4">
-          <a href="mailto:svkrishna1299@gmail.com" class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium hover:bg-teal-700 transition">svkrishna1299@gmail.com</a>
-          <a href="https://linkedin.com/in/rajgopalakrishna" target="_blank" rel="noopener" class="rounded-md border border-teal-600 px-6 py-3 font-medium text-teal-600 hover:bg-teal-50 transition">Connect on LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- BACKDROP (click to close) -->
-    <div id="overlayBackdrop"
-         class="fixed inset-0 z-[59] bg-black/50 opacity-0 pointer-events-none transition-opacity"></div>
-
-    <!-- FULL-SCREEN OVERLAY -->
-    <section id="projectOverlay"
-             class="fixed inset-0 z-[60] bg-white opacity-0 pointer-events-none transition-opacity">
-      <!-- Close button at top-right of OVERLAY -->
-      <button id="overlayClose"
-              class="fixed z-[61] top-4 right-4 text-2xl leading-none rounded-full px-3 py-1
-                     hover:bg-slate-100"
-              aria-label="Close">&times;</button>
-
-      <div class="flex h-full min-h-0 will-zoom">
-        <!-- LEFT rail -->
-        <aside class="will-left w-[360px] bg-slate-900 text-white flex flex-col items-center overflow-y-auto no-scrollbar">
-          <div class="p-6 mt-6">
-            <img src="./FSI/images/Main_Pic.png" alt="Fruit-fly hero"
-                 class="w-[300px] max-w-full object-contain mx-auto" />
-            <h3 class="mt-6 text-center text-base font-semibold">
-              CFD Simulation of Fruit-Fly Wing-Beat Motion
-            </h3>
-          </div>
-        </aside>
-
-        <!-- RIGHT content -->
-        <main class="flex-1 overflow-y-auto no-scrollbar px-8 py-10 space-y-12">
-          <!-- Each section gets will-up for fade-up -->
-          <section class="will-up">
-            <h3 class="text-2xl font-bold mb-4">Aim</h3>
-            <p>Analyse unsteady aerodynamics of a rigid fruit-fly wing in hover, focusing on how passive/active pitch, stroke &amp; elevation affect performance.</p>
-          </section>
-
-          <section class="will-up">
-            <h3 class="text-2xl font-bold mb-6">Computational Model</h3>
-
-            <div class="grid grid-cols-12 gap-8">
-              <!-- Wide table -->
-              <div class="col-span-12 xl:col-span-8">
-                <table class="w-full text-sm border-collapse">
-                  <thead>
-                    <tr class="text-left text-slate-500 border-b">
-                      <th class="pb-3">Aspect</th>
-                      <th class="pb-3">Implementation Details</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-slate-200">
-                    <tr>
-                      <td class="py-4 font-medium">Geometry</td>
-                      <td class="py-4">2.5 mm span rigid wing, CAD origin at root</td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 font-medium">Domain</td>
-                      <td class="py-4">Dual-zone layout: large quiescent background + spherical overset region enclosing the flapping wing</td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 font-medium">Meshing</td>
-                      <td class="py-4">Uniform 0.1 mm base; 0.005 mm minimum near the wing; adaptive mesh refinement keeps interface quality</td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 font-medium">Motion</td>
-                      <td class="py-4">Root translation via “Trajectory” frame; yaw, pitch, roll super-imposed as local frames driven by time-series scalars</td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 font-medium">Solver</td>
-                      <td class="py-4">Incompressible, low-Re k-ω URANS; implicit Δt = 4.58 µs (1/1000 cycle); eight full cycles on HPC cluster</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <!-- Side thumbnails -->
-              <div class="col-span-12 xl:col-span-4">
-                <figure class="flex flex-col items-center mb-6 lift">
-                  <img src="./FSI/images/Geometry_Setup.png" alt="Domain Setup"
-                       class="thumb rounded-xl shadow-lg object-contain cursor-pointer w-full" />
-                  <figcaption class="mt-2 text-sm text-slate-600">Domain Setup</figcaption>
-                </figure>
-
-                <figure class="flex flex-col items-center lift">
-                  <img src="./FSI/images/lift_contour.png" alt="Velocity Contour"
-                       class="thumb rounded-xl shadow-lg object-contain cursor-pointer w-full" />
-                  <figcaption class="mt-2 text-sm text-slate-600">Velocity Contour</figcaption>
-                </figure>
-              </div>
-            </div>
-          </section>
-
-          <section class="will-up">
-            <h3 class="text-2xl font-bold mb-4">Key Results</h3>
-            <ul class="list-disc pl-6 space-y-2">
-              <li>Avg lift ≈ 5.7 µN → L/W ≈ 1 (hovering ✅)</li>
-              <li>Pitch reversals + elevation peaks smooth AoA transitions</li>
-              <li>Moment hysteresis loops show active muscle contribution</li>
-            </ul>
-            <p class="mt-6">
-              <a href="./FSI/Fluid_Structure_Interaction.pdf" target="_blank" class="text-teal-600 hover:underline">Full technical report ↗</a>
-            </p>
-          </section>
-
-          <section class="grid gap-6 md:grid-cols-2 will-up">
-            <figure class="flex flex-col items-center lift">
-              <img src="./FSI/images/wing-trajectory.png" alt="Wing Trajectory"
-                   class="thumb w-full h-56 md:h-64 object-contain rounded-xl shadow-lg cursor-pointer" />
-              <figcaption class="mt-2 text-center text-sm text-slate-600">Wing Trajectory</figcaption>
-            </figure>
-            <figure class="flex flex-col items-center lift">
-              <img src="./FSI/images/Stroke_Moment_Plot.png" alt="Pitching Moment Hysteresis"
-                   class="thumb w-full h-56 md:h-64 object-contain rounded-xl shadow-lg cursor-pointer" />
-              <figcaption class="mt-2 text-center text-sm text-slate-600">Pitching Moment Hysteresis</figcaption>
-            </figure>
-          </section>
-        </main>
-      </div>
-    </section>
-
-    <!-- LIGHTBOX -->
-    <div id="lightBox" class="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity">
-      <img id="lightImg" src="" alt="" class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl border-4 border-white will-zoom" />
-      <div id="caption" class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-sm text-center"></div>
-      <button id="prevBtn" class="absolute left-3 md:left-10 text-white text-3xl leading-none hover:text-teal-200 select-none">&larr;</button>
-      <button id="nextBtn" class="absolute right-3 md:right-10 text-white text-3xl leading-none hover:text-teal-200 select-none">&rarr;</button>
-      <button id="lightClose" class="absolute top-6 right-6 text-white text-3xl leading-none hover:text-teal-200">&times;</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({ once:true, duration:600 });
+  <!-- HERO -->
+  <header id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag fade-in">Göteborg, Sweden · MSc Applied Mechanics</div>
+      <h1 class="hero-name fade-in">Raj Gopala<br><em>Krishna S.V</em></h1>
+      <p class="hero-sub fade-in">
+        CFD Engineer &amp; ML Researcher bridging physics-based simulations<br class="br-desktop">
+        with data-driven intelligence for real-world engineering systems.
+      </p>
+      <div class="hero-pills fade-in">
+        <span class="pill">Turbulence Modelling</span>
+        <span class="pill">Neural Operators</span>
+        <span class="pill">Reinforcement Learning</span>
+        <span class="pill">STAR-CCM+</span>
+      </div>
+      <div class="hero-actions fade-in">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="Resume_120326.pdf" class="btn-outline" target="_blank">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-in">
+      <div class="flow-viz" id="flow-viz">
+        <canvas id="flowCanvas"></canvas>
+        <div class="flow-label">Turbulent wake visualisation</div>
+      </div>
+    </div>
+  </header>
 
-      // ---------- Overlay open/close with animations ----------
-      const htmlEl   = document.documentElement;
-      const card     = document.getElementById('projectCard');
-      const overlay  = document.getElementById('projectOverlay');
-      const backdrop = document.getElementById('overlayBackdrop');
-      const btnClose = document.getElementById('overlayClose');
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="lead">
+            I'm a Mechanical Engineer finishing my MSc at Chalmers University of Technology, where I specialise in
+            computational fluid dynamics, turbulence modelling, and the intersection of high-fidelity simulation with machine learning.
+          </p>
+          <p>
+            My work spans from RANS/DES multiphase simulations of tire-water spray in heavy truck wakes, to building
+            Fourier Neural Operator surrogates and Soft Actor–Critic reinforcement learning controllers for real-time HVAC optimisation.
+            I'm driven by the challenge of making expensive simulations cheaper — and cheaper predictions smarter.
+          </p>
+          <p>
+            Before Chalmers, I spent two years as Lead Product Engineer at Turbo Energy, developing actuators and
+            e-recirculation valves through the full product lifecycle. That hands-on manufacturing experience informs
+            how I approach every simulation problem.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Years of engineering<br>experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Major CFD & ML<br>projects</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Languages<br>spoken</span>
+          </div>
+          <div class="stat-card highlight">
+            <span class="stat-num">Jan '26</span>
+            <span class="stat-label">MSc graduation<br>Chalmers University</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      function playOverlayAnim(){
-        overlay.classList.remove('play-anim'); void overlay.offsetWidth; overlay.classList.add('play-anim');
-      }
-      function openOverlay(){
-        htmlEl.classList.add('overflow-hidden');
-        backdrop.classList.remove('opacity-0','pointer-events-none');
-        overlay.classList.remove('opacity-0','pointer-events-none');
-        playOverlayAnim();
-      }
-      function closeOverlay(){
-        htmlEl.classList.remove('overflow-hidden');
-        overlay.classList.add('opacity-0','pointer-events-none');
-        backdrop.classList.add('opacity-0','pointer-events-none');
-      }
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
 
-      card.addEventListener('click', openOverlay);
-      btnClose.addEventListener('click', closeOverlay);
-      backdrop.addEventListener('click', closeOverlay);
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeOverlay(); });
+        <div class="timeline-item">
+          <div class="tl-meta">
+            <span class="tl-date">Jan 2024 – Present</span>
+            <span class="tl-type research">Research</span>
+          </div>
+          <div class="tl-card">
+            <h3>Research Assistant — Multiphase Flow &amp; Aerodynamics</h3>
+            <div class="tl-org">Chalmers University of Technology</div>
+            <p>Performed RANS/DES simulations with Lagrangian particle tracking to study tire-generated water spray and droplet dispersion behind heavy trucks. Built Gaussian plume and Gaussian-mixture surrogate models to predict concentration fields matching CFD behaviour. End-to-end post-processing in Python including particle statistics, plume widths, centreline drift, and trajectory visualisation.</p>
+            <div class="tag-row">
+              <span class="tag">STAR-CCM+</span>
+              <span class="tag">Python</span>
+              <span class="tag">Multiphase flow</span>
+              <span class="tag">Turbulence modelling</span>
+            </div>
+          </div>
+        </div>
 
-      // ---------- Lightbox ----------
-      const thumbs  = Array.from(document.querySelectorAll('.thumb'));
-      const box     = document.getElementById('lightBox');
-      const img     = document.getElementById('lightImg');
-      const caption = document.getElementById('caption');
-      const nextBtn = document.getElementById('nextBtn');
-      const prevBtn = document.getElementById('prevBtn');
-      const lbClose = document.getElementById('lightClose');
-      let idx = 0;
+        <div class="timeline-item">
+          <div class="tl-meta">
+            <span class="tl-date">Jan – Nov 2025</span>
+            <span class="tl-type industry">Industry</span>
+          </div>
+          <div class="tl-card featured">
+            <div class="featured-badge">Master Thesis</div>
+            <h3>CFD &amp; ML Engineer — Master Thesis</h3>
+            <div class="tl-org">AFRY</div>
+            <p>Performed RANS and URANS 3D CFD simulations modelling indoor airflow and temperature distributions for HVAC systems. Automated CFD workflow for large-scale dataset generation. Developed a 3D Fourier Neural Operator surrogate model to predict full flow and temperature fields at drastically reduced computational cost. Built a Soft Actor–Critic reinforcement learning controller to optimise inlet temperature, radiator output, and supply mass flow in real time.</p>
+            <div class="tag-row">
+              <span class="tag">STAR-CCM+</span>
+              <span class="tag">ANSA</span>
+              <span class="tag">Python</span>
+              <span class="tag">Neural Operators (FNO)</span>
+              <span class="tag">Reinforcement Learning</span>
+              <span class="tag">SAC</span>
+            </div>
+          </div>
+        </div>
 
-      function show(i){ idx=(i+thumbs.length)%thumbs.length; const el=thumbs[idx]; img.src=el.src; caption.textContent=el.alt||''; }
-      function openLB(i){
-        show(i);
-        box.classList.remove('opacity-0','pointer-events-none');
-        img.classList.remove('will-zoom'); void img.offsetWidth; img.classList.add('will-zoom');
-      }
-      function closeLB(){ box.classList.add('opacity-0','pointer-events-none'); img.src=''; }
+        <div class="timeline-item">
+          <div class="tl-meta">
+            <span class="tl-date">Aug 2024 – May 2025</span>
+            <span class="tl-type student">Student Team</span>
+          </div>
+          <div class="tl-card">
+            <h3>Design &amp; Aerodynamics Member</h3>
+            <div class="tl-org">Chalmers Aero Team</div>
+            <p>Designed and sized control surfaces for 3g manoeuvres; modelled aileron, flap, and stabiliser mechanisms. Performed CFD simulations for winglets and fuselage aerodynamic efficiency. Optimised nose-cone structure to minimise weight while maintaining stiffness.</p>
+            <div class="tag-row">
+              <span class="tag">OpenVSP</span>
+              <span class="tag">Fusion-360</span>
+              <span class="tag">STAR-CCM+</span>
+            </div>
+          </div>
+        </div>
 
-      thumbs.forEach((t,i)=> t.addEventListener('click', ()=> openLB(i)));
-      nextBtn.addEventListener('click', ()=> show(idx+1));
-      prevBtn.addEventListener('click', ()=> show(idx-1));
-      lbClose.addEventListener('click', closeLB);
-      box.addEventListener('click', e => { if(e.target === box) closeLB(); });
-      window.addEventListener('keydown', e => {
-        if (box.classList.contains('pointer-events-none')) return;
-        if (e.key === 'Escape')     closeLB();
-        if (e.key === 'ArrowRight') show(idx+1);
-        if (e.key === 'ArrowLeft')  show(idx-1);
-      });
-    </script>
-  </body>
+        <div class="timeline-item">
+          <div class="tl-meta">
+            <span class="tl-date">Aug 2021 – Jun 2023</span>
+            <span class="tl-type industry">Industry</span>
+          </div>
+          <div class="tl-card">
+            <h3>Lead Product Engineer</h3>
+            <div class="tl-org">Turbo Energy Pvt Ltd</div>
+            <p>Led development of actuators and e-recirculation valves with full DFM/DFA and APQP compliance. Drove cost-reduction through value-engineering redesigns. Coordinated PPAP activities and cross-functional manufacturing reviews.</p>
+            <div class="tag-row">
+              <span class="tag">GD&amp;T</span>
+              <span class="tag">DFMA</span>
+              <span class="tag">SolidWorks</span>
+              <span class="tag">APQP</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="proj-icon">🚛</div>
+          <div class="proj-year">2024 – Present</div>
+          <h3>Water Spray Behind Heavy Trucks</h3>
+          <p>RANS and DES simulations with Lagrangian particle tracking to model tire-induced water spray transported by truck wake turbulence. Contributing to the SEVVOS autonomous driving visibility project at Chalmers.</p>
+          <div class="tag-row">
+            <span class="tag">DES</span><span class="tag">Lagrangian tracking</span><span class="tag">Autonomous driving</span>
+          </div>
+        </div>
+
+        <div class="project-card featured-proj">
+          <div class="proj-icon">✈️</div>
+          <div class="proj-year">Sep – Oct 2024</div>
+          <h3>Hydrogen-Powered Blended-Wing Business Jet</h3>
+          <p>Conceptual design of a six-passenger BWB aircraft powered by liquid hydrogen. Achieved L/D ≃ 17, optimised wing loading (74 kg/m²), validated 1,200 NM mission with 27% lower fuel burn than a conventional business jet.</p>
+          <div class="tag-row">
+            <span class="tag">Conceptual design</span><span class="tag">H₂ propulsion</span><span class="tag">BWB</span>
+          </div>
+          <div class="proj-metric">27% less fuel burn</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-icon">🛥️</div>
+          <div class="proj-year">Apr – Jun 2024</div>
+          <h3>AI Control System for Foiling Craft</h3>
+          <p>PD controller implemented in STAR-CCM+ to regulate hydrofoil pitch under unsteady conditions using URANS with k–ω turbulence model.</p>
+          <div class="tag-row">
+            <span class="tag">URANS</span><span class="tag">k–ω</span><span class="tag">Control systems</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-icon">🔊</div>
+          <div class="proj-year">Jan – May 2024</div>
+          <h3>Low-Noise Boxprop Propeller Analysis</h3>
+          <p>Designed a Boxprop using OptoProp and MATLAB; CFD simulations in STAR-CCM+ to evaluate aerodynamic performance and noise characteristics. Boxprop achieved quieter operation with 6% efficiency trade-off.</p>
+          <div class="tag-row">
+            <span class="tag">OptoProp</span><span class="tag">MATLAB</span><span class="tag">Aero-acoustics</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-icon">🪰</div>
+          <div class="proj-year">Nov 2023 – Jan 2024</div>
+          <h3>Fruit Fly Wing Beat CFD</h3>
+          <p>Simulated flapping motion of fruit fly wings using adaptive mesh refinement. Assessed unsteady lift, drag, and pitch moment contributions across the wingbeat cycle.</p>
+          <div class="tag-row">
+            <span class="tag">AMR mesh</span><span class="tag">Unsteady aerodynamics</span><span class="tag">Bionics</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Simulation</h4>
+          <ul>
+            <li>STAR-CCM+</li>
+            <li>ANSYS Fluent</li>
+            <li>Abaqus</li>
+            <li>ANSYS Mechanical</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>CAD &amp; Design</h4>
+          <ul>
+            <li>SolidWorks</li>
+            <li>ANSA</li>
+            <li>OpenVSP</li>
+            <li>Fusion-360</li>
+            <li>CATIA</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Programming</h4>
+          <ul>
+            <li>Python</li>
+            <li>MATLAB</li>
+            <li>Java</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Methods</h4>
+          <ul>
+            <li>CFD / Turbulence Modelling</li>
+            <li>Neural Operators (FNO)</li>
+            <li>Reinforcement Learning</li>
+            <li>Data Analytics</li>
+            <li>GD&amp;T / DFMA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cert-section">
+        <h4>Certifications</h4>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-icon">🎓</span>
+            <div>
+              <div class="cert-name">Supervised Machine Learning: Regression &amp; Classification</div>
+              <div class="cert-org">DeepLearning.AI · Sep 2024</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🎓</span>
+            <div>
+              <div class="cert-name">Advanced Learning Algorithms</div>
+              <div class="cert-org">DeepLearning.AI · Oct 2024</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🎓</span>
+            <div>
+              <div class="cert-name">Computational Physics with Python</div>
+              <div class="cert-org">Udemy · Sep 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Contact</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <p class="lead">Open to opportunities in CFD engineering, computational research, and ML-for-engineering roles. Based in Göteborg, Sweden.</p>
+          <div class="contact-links">
+            <a href="mailto:svkrishna1299@gmail.com" class="contact-link">
+              <span class="cl-icon">✉</span>
+              <span>svkrishna1299@gmail.com</span>
+            </a>
+            <a href="tel:+46761967512" class="contact-link">
+              <span class="cl-icon">☎</span>
+              <span>+46 761 96 75 12</span>
+            </a>
+            <a href="https://www.linkedin.com/in/raj-gopalakrishna-563572209" class="contact-link" target="_blank" rel="noopener">
+              <span class="cl-icon">in</span>
+              <span>LinkedIn Profile</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <div class="contact-card">
+            <div class="cc-row"><span class="cc-label">Based in</span><span>Göteborg, Sweden</span></div>
+            <div class="cc-row"><span class="cc-label">Education</span><span>MSc Applied Mechanics, Chalmers</span></div>
+            <div class="cc-row"><span class="cc-label">Languages</span><span>Tamil · English · German (beginner)</span></div>
+            <div class="cc-row"><span class="cc-label">Availability</span><span class="avail">Open to opportunities</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>© 2025 Raj Gopala Krishna S.V</span>
+      <span>Built with HTML · CSS · JS</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
 </html>
