@@ -1,0 +1,6 @@
+Place your compiled report PDF here with this exact filename:
+
+  AI_Hydrofoil_Project_Report.pdf
+
+The compiled PDF (Main.pdf) is already included in the Overleaf ZIP —
+just rename it and place it here. The "Read Full Report" button will activate automatically.
