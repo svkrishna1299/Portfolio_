@@ -137,6 +137,33 @@ const PROJECTS = {
       { file: 'plot2.jpg',    caption: 'Force decomposition — phase contributions' },
     ],
   },
+
+  'master-thesis': {
+    title: 'Dynamic Control of HVAC Attributes',
+    kicker: 'Master\'s Thesis · CFD · FNO · Reinforcement Learning · Jan – Nov 2025',
+    period: 'Jan – Nov 2025',
+    type: 'Master\'s Thesis / CFD & Machine Learning',
+    institution: 'Chalmers University of Technology · AFRY',
+    tools: ['STAR-CCM+', 'ANSA', 'Python', 'PyTorch', 'Fourier Neural Operator (FNO)', 'Soft Actor-Critic (SAC)', 'neuralop', 'NVIDIA H100 GPU'],
+    description: `HVAC systems account for 20–40% of total building energy consumption, yet most still rely on simple rule-based PID controllers that cannot adapt to changing occupancy, weather, or user preferences. This Master's thesis — carried out in collaboration with <strong>AFRY</strong> — develops a complete physics-informed control framework that replaces repeated CFD solves with a fast neural surrogate, then trains a reinforcement learning agent to optimise the HVAC system in real time.<br><br>The result: a Soft Actor-Critic (SAC) controller that cuts annual energy consumption by <strong>35%</strong> compared to a PID baseline, while keeping thermal comfort violations below 2.3% of operating hours — all running at the speed needed for live closed-loop deployment.`,
+    methodology: `A hospital room geometry provided by AFRY was simplified in ANSA and meshed in STAR-CCM+ with 1.8 million trimmed cells and adaptive mesh refinement (AMR) at critical gradient regions. 973 steady-state CFD simulations — covering summer, autumn, and winter boundary conditions with varying inlet temperature, mass-flow rate, radiator setpoint, and outdoor weather — were automated via a Java macro and run with the Realizable k–ε turbulence model. Each run extracted a 2,400-point spatial grid of temperature and velocity fields, creating a comprehensive training dataset.<br><br>A 3D Fourier Neural Operator (FNO) was trained on this dataset using PyTorch and the neuralop library — 256 hidden channels, 4 spectral layers, 20 Fourier modes per dimension, trained for 200 epochs on an NVIDIA H100 GPU. The FNO predicts full 3D temperature and velocity fields from boundary conditions in milliseconds, replacing the CFD solver in the control loop.<br><br>A Soft Actor-Critic (SAC) controller was coupled with the FNO surrogate. The actor and critic networks each use two hidden layers of 512 nodes. The reward function balances energy cost, temperature deviation from the 21°C setpoint, control oscillation, and occupant-zone comfort (thermal stratification, zone mean deviation, zone variance). The controller operates on a 20-minute step aligned with the room's thermal settling time, benchmarked against a PI controller over a full year of Swedish weather data.`,
+    results: [
+      { value: '35%',      label: 'Energy saving vs. PID' },
+      { value: '4,836 kWh', label: 'SAC annual consumption' },
+      { value: '>90%',     label: 'FNO predictions within 5% error' },
+      { value: '973',      label: 'CFD training simulations' },
+    ],
+    report: 'master-thesis/Dynamic_Control_of_HVAC_Attributes_Master_Thesis.pdf',
+    images: [
+      { file: 'cover.png',    caption: 'Velocity flow field volume render — ventilated hospital room' },
+      { file: 'geometry.png', caption: 'CFD mesh — section view XZ plane (1.8M trimmed cells)' },
+      { file: 'mesh.png',     caption: 'Mesh detail near HVAC inlet vent with local refinement' },
+      { file: 'cfd1.png',     caption: 'Steady-state temperature contour — buoyancy-driven stratification' },
+      { file: 'cfd2.png',     caption: 'FNO prediction vs. CFD ground truth — temperature field at Y = 200 mm' },
+      { file: 'plot1.png',    caption: 'SAC training rewards — energy penalty and comfort penalty over episodes' },
+      { file: 'plot2.png',    caption: 'SAC controller output — inlet temperature, mass-flow rate and radiator setpoint over time' },
+    ],
+  },
 };
 
 // ── Scroll reveal ──────────────────────────────────────────────

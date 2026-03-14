@@ -1,0 +1,11 @@
+Place your compiled Master's Thesis PDF here with this exact filename:
+
+  Dynamic_Control_of_HVAC_Attributes_Master_Thesis.pdf
+
+Steps:
+1. Open your Overleaf project
+2. Click "Download PDF" in the preview pane
+3. Rename the file to the name above
+4. Drop it into this folder (master-thesis/)
+
+The "Read Full Report" button in your portfolio will work automatically.
