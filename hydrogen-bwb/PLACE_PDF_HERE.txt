@@ -1,0 +1,7 @@
+Place the compiled report PDF here with this exact filename:
+
+  Horizon_2035_Aircraft_Design_Report.pdf
+
+The report is already compiled — use Main.pdf from the Overleaf project,
+or download the PDF directly from Overleaf and rename it.
+The "Read Full Report" button will activate automatically.
