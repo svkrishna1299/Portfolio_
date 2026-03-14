@@ -1,0 +1,6 @@
+Place your compiled report PDF here with this exact filename:
+
+  CFD_Simulation_Fruit_Fly_Wing_Beat.pdf
+
+The compiled PDF (Main.pdf) is already in the Overleaf ZIP —
+rename it and place it here. The "Read Full Report" button activates automatically.
