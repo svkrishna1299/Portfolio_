@@ -74,3 +74,26 @@ The amber accent (#e8a030) is defined as --amber in :root in style.css.
 ## Contact info
 
 Search for svkrishna1299@gmail.com and +46 761 96 75 12 in index.html to update.
+
+---
+
+## Boxprop project folder
+
+The `boxprop/` folder holds all assets for the Boxprop propeller project:
+
+```
+boxprop/
+├── Analysis_of_a_low_noise_Boxprop_propeller_report.pdf   ← place your compiled PDF here
+└── images/
+    ├── cover.png       ← card thumbnail + detail hero (boxprop render)
+    ├── geometry.png    ← blade cross-section geometry
+    ├── mesh.png        ← CFD computational domain
+    ├── cfd1.png        ← pressure distribution at 50% tip radius
+    ├── cfd2.png        ← pressure distribution at 95% tip radius (tip interference)
+    ├── plot1.png       ← wake velocity field downstream
+    └── plot2.png       ← velocity field at blade section
+```
+
+The website also mirrors these images at `images/boxprop/` (used by the project card thumbnail).
+When you add a new project, place its PDF at `<project_id>/<report_filename>.pdf` and set
+the `report` field in the PROJECTS object in `main.js` to that path.

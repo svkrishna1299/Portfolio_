@@ -1,0 +1,11 @@
+Place your compiled report PDF here with this exact filename:
+
+  Analysis_of_a_low_noise_Boxprop_propeller_report.pdf
+
+Steps to get the PDF from Overleaf:
+1. Open your project in Overleaf
+2. Click the "Download PDF" button (top right of the preview pane)
+3. Save the file and rename it to the filename above
+4. Drop it in this folder (boxprop/)
+
+The "Read Full Report" button in your portfolio will then work automatically.

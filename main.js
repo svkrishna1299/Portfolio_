@@ -92,22 +92,24 @@ const PROJECTS = {
     period: 'Jan – May 2024',
     type: 'CFD / Aero-acoustics',
     institution: 'Chalmers University of Technology',
-    tools: ['STAR-CCM+', 'OptoProp', 'MATLAB', 'MRF / Sliding mesh', 'FW-H acoustic analogy'],
-    description: `The Boxprop — a tip-joined contra-rotating propeller concept — aims to reduce noise by eliminating free blade tips, the primary source of high-frequency tonal noise. This study compared aerodynamic efficiency and acoustic signature against a conventional propeller at equivalent thrust.`,
-    methodology: `Boxprop geometry was parametrically designed in OptoProp and MATLAB, optimising blade twist and chord distribution. CFD in STAR-CCM+ used multiple-reference-frame (MRF) steady approach for initial aerodynamic assessment, followed by time-accurate sliding mesh computations. Noise was estimated via the Ffowcs Williams–Hawkings (FW-H) acoustic analogy, integrating surface pressure fluctuations on permeable control surfaces. Acoustic directivity patterns and SPL were compared against the conventional propeller at identical thrust and advance ratio.`,
+    tools: ['STAR-CCM+', 'OptoProp / BBcode', 'CATIA V5', 'Python', 'k–ω SST', 'FW-H acoustic analogy', 'MRF steady-state', 'Unsteady RANS'],
+    description: `Small UAV propellers are highly efficient at low speeds, but they generate substantial noise — a growing concern in urban and research environments. This project investigates the <strong>Boxprop</strong>, a novel tip-joined blade concept developed at Chalmers, which connects two blades at the tip to eliminate free tip vortices and reduce tonal noise. The study designed and compared a two-bladed Boxprop against a four-bladed conventional reference propeller at equivalent operating conditions, using CFD for aerodynamic assessment and aero-acoustic simulation for noise evaluation.`,
+    methodology: `Both propellers were designed from scratch to meet shared requirements: 152 mm diameter, 9,500 RPM, 30 m/s flight speed, and a minimum thrust of 1.5 N. The conventional propeller was generated using OptoProp (Chalmers in-house code) and the Boxprop using BBcode, with blade geometry imported into CATIA V5 via VBA scripting. An iterative CFD loop in STAR-CCM+ refined each design until target performance was achieved. The aerodynamic simulations employed the k–ω SST turbulence model with Moving Reference Frame (MRF) steady-state approach. A mesh convergence study ensured numerical accuracy, achieving a mean y+ of 0.51 on the blade surface. For aero-acoustics, Unsteady RANS was run across 5 full rotor rotations, with far-field noise computed using the Ffowcs Williams–Hawkings (FW-H) analogy. The acoustic simulation methodology was first validated against experimental tandem cylinder data before being applied to the propeller.`,
     results: [
-      { value: 'Quieter', label: 'vs. conventional prop' },
-      { value: '−6%',     label: 'Efficiency penalty' },
+      { value: '76.2%',   label: 'Reference prop efficiency' },
+      { value: '70%',     label: 'Boxprop efficiency' },
+      { value: '1.86 N',  label: 'Reference thrust' },
       { value: 'FW-H',    label: 'Acoustic method' },
-      { value: 'MRF+SM',  label: 'Simulation strategy' },
     ],
+    report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf',
     images: [
-      { file: 'geometry.jpg', caption: 'Boxprop blade geometry — OptoProp' },
-      { file: 'mesh.jpg',     caption: 'Rotating domain mesh' },
-      { file: 'cfd1.jpg',     caption: 'Pressure isosurfaces — blade loading' },
-      { file: 'cfd2.jpg',     caption: 'Vorticity — tip vs. Boxprop junction' },
-      { file: 'plot1.jpg',    caption: 'Thrust & torque coefficients vs. J' },
-      { file: 'plot2.jpg',    caption: 'Acoustic directivity — SPL comparison' },
+      { file: 'cover.png',    caption: 'Boxprop CAD render — final blade design' },
+      { file: 'geometry.png', caption: 'Blade geometry — span-wise cross-sections' },
+      { file: 'mesh.png',     caption: 'CFD computational domain — rotating & static regions' },
+      { file: 'cfd1.png',     caption: 'Pressure distribution — Boxprop at 50% tip radius, 9500 RPM' },
+      { file: 'cfd2.png',     caption: 'Pressure distribution — Boxprop at 95% tip radius, showing tip interference' },
+      { file: 'plot1.png',    caption: 'Wake velocity field — Boxprop downstream' },
+      { file: 'plot2.png',    caption: 'Velocity field — Boxprop blade section at 50% radius' },
     ],
   },
 
@@ -304,14 +306,29 @@ function openProject(id) {
 
   const toolsHTML = p.tools.map(t => `<span class="tag">${t}</span>`).join('');
 
+  // Determine cover image (use first image file if defined, else fallback)
+  const coverSrc = p.images[0] ? `images/${id}/${p.images[0].file}` : `images/${id}/cover.jpg`;
+
+  const reportHTML = p.report
+    ? `<a class="po-report-link" href="${p.report}" target="_blank" rel="noopener">
+         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+           <path d="M9 2v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+           <path d="M6 9h4M6 11.5h2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+         </svg>
+         Read Full Report
+       </a>`
+    : '';
+
   poContent.innerHTML = `
-    <img class="po-hero-img" src="images/${id}/cover.jpg" alt="${p.title}"
+    <img class="po-hero-img" src="${coverSrc}" alt="${p.title}"
          onerror="this.style.display='none'" />
     <div class="po-header">
       <div class="po-title-block">
         <div class="po-kicker">${p.kicker}</div>
         <h2>${p.title}</h2>
         <p class="po-description">${p.description}</p>
+        ${reportHTML}
       </div>
       <div class="po-meta-block">
         <div class="po-meta-row"><span class="pm-label">Period</span><span class="pm-value">${p.period}</span></div>
