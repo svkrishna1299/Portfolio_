@@ -596,6 +596,20 @@ section:nth-child(even) { background: var(--bg-2); }
   opacity: 1;
 }
 
+/* Video-only card — no static image, video acts as thumbnail */
+.proj-card-img--video-only .proj-card-video {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  filter: brightness(0.85);
+  transition: transform 0.5s var(--ease-out), filter 0.3s;
+}
+.proj-card:hover .proj-card-img--video-only .proj-card-video {
+  transform: scale(1.06);
+  filter: brightness(1);
+  opacity: 1;
+}
+
 /* Placeholder when image missing */
 .proj-card-img.img-placeholder {
   display: flex;

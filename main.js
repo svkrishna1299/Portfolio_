@@ -17,22 +17,21 @@ const PROJECTS = {
     period: '2024 – Present',
     type: 'CFD / Multiphase Flow',
     institution: 'Chalmers University of Technology',
-    tools: ['STAR-CCM+', 'Python', 'RANS', 'DES', 'Lagrangian particle tracking', 'Gaussian surrogate models'],
-    description: `Tire-generated water spray is a major visibility hazard for autonomous driving in wet conditions. This project, part of the SEVVOS initiative at Chalmers, uses high-fidelity CFD to characterise droplet dispersion in the turbulent wake of heavy trucks.`,
-    methodology: `RANS steady-state simulations established the mean flow field around a full-scale truck geometry, capturing recirculation zones and shear layers in the near wake. Detached Eddy Simulation (DES) resolved large-scale turbulent structures responsible for droplet transport. Lagrangian particle tracking injected droplets at tyre contact patches, tracking size-distribution evolution, coalescence, and evaporation through the wake. Gaussian plume and Gaussian-mixture surrogate models were fitted to CFD results to create fast predictive tools for concentration fields, enabling parametric studies across vehicle speeds, headway distances, and rainfall intensities. Post-processing was automated in Python, computing plume widths, centreline drift, and trajectory visualisations.`,
+    tools: ['STAR-CCM+', 'Python', 'RANS', 'DES', 'Lagrangian particle tracking', 'Gaussian plume model'],
+    description: `Tire-generated water spray creates a critical visibility hazard for following vehicles — a growing concern as autonomous systems must reliably detect objects through dense spray clouds in wet conditions. As part of the <strong>SEVVOS</strong> initiative at Chalmers, this project uses high-fidelity CFD with Lagrangian particle tracking to characterise droplet dispersion in the turbulent wake of heavy trucks, then develops a fast <strong>Gaussian plume surrogate model</strong> that reproduces the CFD concentration fields at a fraction of the computational cost.`,
+    methodology: `RANS steady-state simulations established the mean flow field around a full-scale truck geometry, resolving recirculation zones and shear layers in the near wake. Lagrangian particle tracking injected droplets at all four rear tyre contact patches, following each parcel through the turbulent wake and capturing the characteristic dual-plume structure from the two axles immediately behind the truck.<br><br>The resulting concentration fields were sampled on cross-sectional planes normal to the streamwise direction at X = 1 m and X = 10 m behind the truck. At X = 1 m, two distinct symmetric peaks corresponding to the left and right tyres are clearly resolved; by X = 10 m the plumes have merged into a single broader distribution. A Gaussian mixture model was fitted to these profiles — the Z-profiles (transverse, horizontal) captured the lateral spread, while Y-profiles (vertical) captured height-wise decay. The surrogate matches the CFD data well in the far field, providing a fast predictive tool for concentration across varying vehicle speeds and headway distances.`,
     results: [
-      { value: 'DES',      label: 'Turbulence method' },
-      { value: '~10M',     label: 'Cell count' },
-      { value: 'Gaussian', label: 'Surrogate model' },
-      { value: 'SEVVOS',   label: 'Project affiliation' },
+      { value: 'DES/RANS',  label: 'Turbulence approach' },
+      { value: '4 tyres',   label: 'Lagrangian injection sites' },
+      { value: 'X = 1–10 m', label: 'Wake sampling range' },
+      { value: 'Gaussian',  label: 'Surrogate model type' },
     ],
     images: [
-      { file: 'geometry.jpg', caption: 'Truck geometry & computational domain' },
-      { file: 'mesh.jpg',     caption: 'Surface & volume mesh detail' },
-      { file: 'cfd1.jpg',     caption: 'Velocity magnitude — longitudinal plane' },
-      { file: 'cfd2.jpg',     caption: 'Droplet concentration field — rear view' },
-      { file: 'plot1.jpg',    caption: 'Plume width vs. downstream distance' },
-      { file: 'plot2.jpg',    caption: 'Particle size distribution at 10 m' },
+      { type: 'video', src: 'water_spray/deposition_animation.mp4', caption: 'Particle deposition animation — Lagrangian droplets injected at tyre contact patches dispersing through the turbulent truck wake' },
+      { file: 'cfd1.png', caption: 'CFD result — velocity field and spray cloud in the near-wake; turbulent recirculation region visible immediately behind the trailer' },
+      { file: 'cfd2.png', caption: 'Lagrangian particle trajectories — droplets coloured by size, ejected from the rear tyre patches and dispersed by the wake vortex system' },
+      { file: 'plot1.png', caption: 'Transverse (Z) concentration profile at X = 1 m — two distinct peaks from left and right tyres; Gaussian mixture model (orange) vs. CFD (dashed blue)' },
+      { file: 'plot2.png', caption: 'Transverse (Z) concentration profile at X = 10 m — plumes merged into a single distribution; surrogate model captures overall spread' },
     ],
   },
 
@@ -342,8 +341,9 @@ function openProject(id) {
 
   const toolsHTML = p.tools.map(t => `<span class="tag">${t}</span>`).join('');
 
-  // Determine cover image (use first image file if defined, else fallback)
-  const coverSrc = p.images[0] ? `images/${id}/${p.images[0].file}` : `images/${id}/cover.jpg`;
+  // Determine cover image — skip video entries, use first image file
+  const firstImg = p.images.find(i => i.type !== 'video');
+  const coverSrc = firstImg ? `images/${id}/${firstImg.file}` : `images/${id}/cover.jpg`;
 
   const reportHTML = p.report
     ? `<a class="po-report-link" href="${p.report}" target="_blank" rel="noopener">
