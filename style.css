@@ -946,23 +946,56 @@ section:nth-child(even) { background: var(--bg-2); }
 .po-gallery-item figcaption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 0.6rem 0.8rem;
-  background: linear-gradient(transparent, rgba(13,15,20,0.85));
+  padding: 1rem 0.9rem 0.75rem;
+  background: linear-gradient(transparent, rgba(5,7,12,0.92));
   font-family: var(--ff-mono);
-  font-size: 0.68rem;
-  color: var(--text-2);
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
 }
+
+/* Video item in gallery */
+.po-gallery-item--video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s var(--ease-out);
+  filter: brightness(0.88);
+}
+.po-gallery-item--video:hover video {
+  transform: scale(1.04);
+  filter: brightness(1);
+}
+.po-gallery-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(232,160,48,0.18);
+  border: 1.5px solid rgba(232,160,48,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  color: var(--amber);
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.po-gallery-item--video:hover .po-gallery-play { opacity: 0; }
 
 /* Lightbox */
 #lightbox {
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: rgba(0,0,0,0.92);
+  background: rgba(0,0,0,0.93);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem 2rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s;
@@ -970,10 +1003,26 @@ section:nth-child(even) { background: var(--bg-2); }
 #lightbox.open { opacity: 1; pointer-events: all; }
 #lightbox img {
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: 78vh;
   object-fit: contain;
   border-radius: 3px;
   border: 1px solid var(--border-2);
+}
+#lightbox-video {
+  max-width: 92vw;
+  max-height: 78vh;
+  border-radius: 3px;
+  border: 1px solid var(--border-2);
+  display: none;
+}
+#lightbox-caption {
+  font-family: var(--ff-mono);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.03em;
+  text-align: center;
+  max-width: 72ch;
+  line-height: 1.6;
 }
 #lightbox-close {
   position: absolute;

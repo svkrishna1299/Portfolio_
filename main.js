@@ -79,7 +79,7 @@ const PROJECTS = {
     ],
     report: 'foiling-craft/AI_Hydrofoil_Project_Report.pdf',
     images: [
-      { file: 'cover.jpg',   caption: 'Den Foilande Optimisten — Chalmers foiling Optimist dinghy, the physical motivation for active hydrofoil control' },
+      { type: 'video', src: 'foiling-craft/varying_velocity1Hz.mp4', caption: 'CFD simulation — NACA 0012 hydrofoil tracking 5,000 N lift under 1 Hz sinusoidal inflow; PD controller actuates angle of attack in real time via Java macro embedded in STAR-CCM+' },
       { file: 'mesh.png',    caption: 'Computational mesh — NACA 0012 overset region with 15 prism layers and wake refinement (89,036 cells total)' },
       { file: 'domain.png',  caption: 'Computational domain — 6×6 m with velocity inlet, pressure outlet, and slip-wall boundaries; overset foil at domain centre' },
       { file: 'plot1.png',   caption: 'Core result — lift force tracking under 1 Hz sinusoidal inlet velocity: stable gain set (K_p=2.5×10⁻⁵, K_d=1.0×10⁻⁷) follows the 5,000 N setpoint' },
@@ -321,6 +321,14 @@ function openProject(id) {
   ).join('');
 
   const galleryHTML = p.images.map(img => {
+    if (img.type === 'video') {
+      return `
+        <figure class="po-gallery-item po-gallery-item--video" data-video-src="${img.src}" data-caption="${img.caption}">
+          <video src="${img.src}" muted loop playsinline preload="metadata"></video>
+          <div class="po-gallery-play">▶</div>
+          <figcaption>${img.caption}</figcaption>
+        </figure>`;
+    }
     const src = `images/${id}/${img.file}`;
     return `
       <figure class="po-gallery-item" data-src="${src}" data-caption="${img.caption}">
@@ -381,9 +389,17 @@ function openProject(id) {
   overlay.classList.add('open');
   overlay.scrollTop = 0;
 
-  // Gallery lightbox
-  overlay.querySelectorAll('.po-gallery-item:not(.img-placeholder)').forEach(fig => {
-    fig.addEventListener('click', () => openLightbox(fig.dataset.src, fig.dataset.caption));
+  // Gallery lightbox — images
+  overlay.querySelectorAll('.po-gallery-item:not(.img-placeholder):not(.po-gallery-item--video)').forEach(fig => {
+    fig.addEventListener('click', () => openLightbox(fig.dataset.src, fig.dataset.caption, fig.dataset.caption));
+  });
+
+  // Gallery — video items: hover to play, click to open in lightbox
+  overlay.querySelectorAll('.po-gallery-item--video').forEach(fig => {
+    const vid = fig.querySelector('video');
+    fig.addEventListener('mouseenter', () => vid && vid.play().catch(() => {}));
+    fig.addEventListener('mouseleave', () => { if (vid) { vid.pause(); vid.currentTime = 0; } });
+    fig.addEventListener('click', () => openVideoLightbox(fig.dataset.videoSrc, fig.dataset.caption));
   });
 }
 
@@ -406,16 +422,39 @@ document.querySelectorAll('.proj-card[data-project]').forEach(card => {
 });
 
 // ── Lightbox ───────────────────────────────────────────────────
-const lightbox      = document.getElementById('lightbox');
-const lightboxImg   = document.getElementById('lightbox-img');
-const lightboxClose = document.getElementById('lightbox-close');
+const lightbox       = document.getElementById('lightbox');
+const lightboxImg    = document.getElementById('lightbox-img');
+const lightboxVideo  = document.getElementById('lightbox-video');
+const lightboxCap    = document.getElementById('lightbox-caption');
+const lightboxClose  = document.getElementById('lightbox-close');
 
-const openLightbox = (src, alt) => {
+const openLightbox = (src, alt, caption) => {
   lightboxImg.src = src;
   lightboxImg.alt = alt || '';
+  lightboxImg.style.display = '';
+  lightboxVideo.style.display = 'none';
+  lightboxVideo.pause();
+  lightboxCap.textContent = caption || '';
   lightbox.classList.add('open');
 };
-const closeLightbox = () => { lightbox.classList.remove('open'); lightboxImg.src = ''; };
+
+const openVideoLightbox = (src, caption) => {
+  lightboxVideo.src = src;
+  lightboxVideo.style.display = '';
+  lightboxImg.style.display = 'none';
+  lightboxImg.src = '';
+  lightboxCap.textContent = caption || '';
+  lightbox.classList.add('open');
+  lightboxVideo.play().catch(() => {});
+};
+
+const closeLightbox = () => {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute('src');
+  lightboxCap.textContent = '';
+};
 
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
