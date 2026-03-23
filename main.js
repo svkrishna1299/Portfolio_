@@ -426,3 +426,12 @@ document.addEventListener('keydown', e => {
     else if (overlay.classList.contains('open')) closeProject();
   }
 });
+
+// ── Project card video hover ────────────────────────────────────
+document.querySelectorAll('.proj-card-img--video').forEach(cardImg => {
+  const video = cardImg.querySelector('.proj-card-video');
+  if (!video) return;
+  const card  = cardImg.closest('.proj-card');
+  card.addEventListener('mouseenter', () => { video.play().catch(() => {}); });
+  card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+});
