@@ -317,7 +317,7 @@ function openProject(id) {
   if (!p) return;
 
   const resultsHTML = p.results.map(r =>
-    `<div class="po-result-item"><div class="pr-value">${r.value}</div><div class="pr-label">${r.label}</div></div>`
+    `<li><span class="pr-label">${r.label}:</span> <span class="pr-value">${r.value}</span></li>`
   ).join('');
 
   const galleryHTML = p.images.map(img => {
@@ -372,7 +372,8 @@ function openProject(id) {
         <div class="po-meta-row"><span class="pm-label">Institution</span><span class="pm-value">${p.institution}</span></div>
       </div>
     </div>
-    <div class="po-results">${resultsHTML}</div>
+    <p class="po-section-title">Key results</p>
+    <ul class="po-results">${resultsHTML}</ul>
     <p class="po-section-title">Methodology</p>
     <p class="po-body-text">${p.methodology}</p>
     <p class="po-gallery-label">Figures — geometry · mesh · results</p>
