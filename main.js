@@ -27,10 +27,10 @@ const PROJECTS = {
       { value: 'Gaussian',  label: 'Surrogate model type' },
     ],
     images: [
+      { file: 'cfd1.png', caption: 'CFD result — velocity field and spray cloud in the near-wake; turbulent recirculation region visible immediately behind the trailer' },
       { type: 'video', src: 'water_spray/deposition_animation.mp4', caption: 'Particle deposition animation — Lagrangian droplets injected at tyre contact patches dispersing through the turbulent truck wake' },
       { file: 'domain.png', caption: 'Computational domain — full-scale truck geometry centred in a large rectangular wind-tunnel-style domain; inlet (red face) prescribes uniform 25 m/s freestream, outlet (brown) applies zero-gradient pressure' },
       { file: 'mesh.png', caption: 'Cross-sectional mesh — polyhedral volume cells with prism layer refinement around the truck body and near-road region; local refinement captures boundary layer and tyre geometry' },
-      { file: 'cfd1.png', caption: 'CFD result — velocity field and spray cloud in the near-wake; turbulent recirculation region visible immediately behind the trailer' },
       { file: 'cfd2.png', caption: 'Lagrangian particle trajectories — droplets coloured by residence time, ejected from the rear tyre patches and dispersed by the wake vortex system' },
       { file: 'plot1.png', caption: 'Transverse (Z) concentration profile at X = 1 m — two distinct peaks from left and right tyres; Gaussian mixture model (orange) vs. CFD (dashed blue)' },
       { file: 'plot2.png', caption: 'Transverse (Z) concentration profile at X = 10 m — plumes merged into a single distribution; surrogate model captures overall spread' },
@@ -54,8 +54,9 @@ const PROJECTS = {
     ],
     report: 'hydrogen-bwb/Horizon_2035_Aircraft_Design_Report.pdf',
     images: [
-      { file: 'cover.png',    caption: 'Horizon 2035 — isometric view of final BWB configuration (Dash 2)' },
+      { file: 'Horizon_2035.png', caption: 'Horizon 2035 — rendered isometric view of the final BWB configuration with rear-mounted hydrogen turbofan engines and blended fuselage-wing body' },
       { file: 'cfd1.png',     caption: 'Top-view three-view drawing — planform geometry and wing layout' },
+      { file: 'flaps_ailerons.png', caption: 'Final iteration — top-view geometry with flap and aileron surfaces defined; control surface sizing driven by 3g manoeuvre and roll rate requirements' },
       { file: 'cfd2.png',     caption: 'Drag polar with maximum L/D tangent — C_D0 = 0.0155, max L/D = 16.6' },
       { file: 'plot1.png',    caption: 'Constraint diagram — T/W vs. W/S across climb, cruise, and take-off' },
       { file: 'plot2.png',    caption: 'MTOW convergence — graphical intersection at 3,028 kg (Dash 1)' },
