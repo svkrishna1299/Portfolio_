@@ -1,0 +1,124 @@
+% CREATED BY DAVID FRISK, 2016
+% MODIFIED BY JAKOB JARMAR, 2016
+% A few changes by Birgit Grohe, 2017 and \the\year
+% Adjustments with the help of Gustav Örtenberg 2019
+
+% COVER PAGE
+\begin{titlepage}
+\newgeometry{top=3cm, bottom=3cm,
+			left=2.25 cm, right=2.25cm}	% Temporarily change margins		
+			
+% Cover page background 
+\AddToShipoutPicture*{\backgroundpic{-4}{56.7}{figure/auxiliary/frontpage_gu_eng_vec_m2.pdf}}
+\addtolength{\voffset}{1cm}
+
+% Cover picture 		
+\begin{figure}[H]
+\centering
+\vspace{1cm}	% Adjust vertical spacing here
+\includegraphics[width=0.9\linewidth]{include/frontmatter/CoverPic.png}
+\end{figure}
+
+% Cover text
+\mbox{}
+%\vfill
+\renewcommand{\familydefault}{\sfdefault} \normalfont % Set cover page font
+
+\textbf{\Huge {CFD Simulation of Fruit Fly Wing Beat Motion}}
+\\
+
+{\Large { An investigation of unsteady aerodynamics of fruit-fly wing motion to determine passiveness of different degrees of freedom}}
+
+{A Chalmers University of Technology
+Report for TRA270 Track Course - Fluid
+Structure Interactions, Study Period 2}\\
+%\setlength{\parskip}{1cm}
+
+{\large {BALA KUMARESH THILEEP KUMAR\\[0.15cm]
+CHAITHANYA KARRA\\[0.15cm]
+JOHN PAUL PERUMADAN MANNUMMAL\\[0.15cm]
+RAJ GOPALA KRISHNA SUBRAMANI VENKATACHALAM\\[0.15cm]
+SHREEYESH SREENIVASAN}} \setlength{\parskip}{1.1cm}
+
+Department of Mechanics and Maritime Sciences \\
+\textsc{Chalmers University of Technology} \\
+\textsc{University of Gothenburg} \\
+Gothenburg, Sweden \the\year
+
+\renewcommand{\familydefault}{\rmdefault} \normalfont % Reset standard font
+\end{titlepage}
+
+
+% BACK OF COVER PAGE (BLANK PAGE)
+\newpage
+\restoregeometry
+\thispagestyle{empty}
+\mbox{}
+
+
+% TITLE PAGE
+\newpage
+\thispagestyle{empty}
+\begin{center}
+	\textsc{\large Project Report \the\year}\\[4cm]		% Report number is currently not in use
+	\textbf{\Large {CFD Simulation of Fruit Fly Wing Beat Motion}} \\[1cm]
+	{\large {An investigation of unsteady aerodynamics of fruit-fly wing motion to determine passiveness of different degrees of freedom}}\\[1cm]
+	{\large {BALA KUMARESH THILEEP KUMAR\\         [0.2cm]
+        CHAITHANYA KARRA\\[0.2cm]
+        JOHN PAUL PERUMADAN MANNUMMAL\\[0.2cm]
+        RAJ GOPALA KRISHNA SUBRAMANI VENKATACHALAM\\[0.2cm]
+        SHREEYESH SREENIVASAN}}
+	
+	\vfill	
+	% Logotype on titlepage	
+	\begin{figure}[H]
+	\centering
+	% Remove the following line to remove the titlepage logotype
+	\includegraphics[width=0.25\pdfpagewidth]{figure/auxiliary/ChGULogoHog.pdf}
+	\end{figure}	\vspace{5mm}	
+	
+	Department of Mechanics and Maritime Sciences \\
+\textsc{Chalmers University of Technology} \\
+	\textsc{University of Gothenburg} \\
+	Gothenburg, Sweden \the\year \\
+\end{center}
+
+
+% IMPRINT PAGE (BACK OF TITLE PAGE)
+\newpage
+\thispagestyle{plain}
+\vspace*{4.5cm}
+{CFD Simulation of Fruit Fly Wing Beat Motion}\\
+{An investigation of unsteady aerodynamics of fruit-fly wing motion to determine passiveness of different degrees of freedom}\\
+{BALA KUMARESH THILEEP KUMAR\\         [0.2cm]
+        CHAITHANYA KARRA\\[0.2cm]
+        JOHN PAUL PERUMADAN MANNUMMAL\\[0.2cm]
+        RAJ GOPALA KRISHNA SUBRAMANI VENKATACHALAM\\[0.2cm]
+        SHREEYESH SREENIVASAN}\setlength{\parskip}{1cm}
+
+\copyright ~ {BALA KUMARESH THILEEP KUMAR\\         [0.2cm]
+        CHAITHANYA KARRA\\[0.2cm]
+        JOHN PAUL PERUMADAN MANNUMMAL\\[0.2cm]
+        RAJ GOPALA KRISHNA SUBRAMANI VENKATACHALAM\\[0.2cm]
+        SHREEYESH SREENIVASAN}, \the\year. \setlength{\parskip}{1cm}
+
+Supervisor: Arion Pons, Division of Fluid Dynamics, Department of Mechanics and Martime Sciences\\
+Examiner: Hua-Dong Yao, Department of Mechanics and Martime Sciences \setlength{\parskip}{1cm}
+
+Project Report \the\year\\	% Report number currently not in use 
+Department of Mechanics and Martime Sciences\\
+%Division of Division name\\
+%Name of research group (if applicable)\\
+Chalmers University of Technology and University of Gothenburg\\
+SE-412 96 Gothenburg\\
+Telephone +46 31 772 1000 \setlength{\parskip}{0.5cm}
+
+\vfill
+% Caption for cover page figure if used, possibly with reference to further information in the report
+Cover: Velocity contour plots of an instance from CFD simulation 
+
+
+Typeset in \LaTeX \\
+%Printed by [Name of printing company]\\
+Gothenburg, Sweden \the\year
+

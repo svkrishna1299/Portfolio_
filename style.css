@@ -461,7 +461,7 @@ section:nth-child(even) { background: var(--bg-2); }
   padding: 3px 10px;
   background: var(--bg);
   border: 1px solid var(--border-2);
-  color: var(--text-3);
+  color: var(--text);
   border-radius: 2px;
   letter-spacing: 0.04em;
 }
@@ -1134,7 +1134,13 @@ section:nth-child(even) { background: var(--bg-2); }
   border-radius: 4px;
 }
 
-.cert-icon { font-size: 1.2rem; }
+.cert-icon {
+  font-size: 1.4rem;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
 
 .cert-name {
   font-size: 0.9rem;

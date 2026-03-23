@@ -56,7 +56,7 @@ const PROJECTS = {
     images: [
       { file: 'Horizon_2035.png', caption: 'Horizon 2035 — rendered isometric view of the final BWB configuration with rear-mounted hydrogen turbofan engines and blended fuselage-wing body' },
       { file: 'cfd1.png',     caption: 'Top-view three-view drawing — planform geometry and wing layout' },
-      { file: 'flaps_ailerons.png', caption: 'Final iteration — top-view geometry with flap and aileron surfaces defined; control surface sizing driven by 3g manoeuvre and roll rate requirements' },
+      { file: 'flaps_ailerons.png', caption: 'Final iteration — top-view geometry with flap and aileron surfaces defined; control surface positions and sizing determined through analytical sizing calculations' },
       { file: 'cfd2.png',     caption: 'Drag polar with maximum L/D tangent — C_D0 = 0.0155, max L/D = 16.6' },
       { file: 'plot1.png',    caption: 'Constraint diagram — T/W vs. W/S across climb, cruise, and take-off' },
       { file: 'plot2.png',    caption: 'MTOW convergence — graphical intersection at 3,028 kg (Dash 1)' },
