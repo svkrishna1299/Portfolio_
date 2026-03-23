@@ -28,8 +28,10 @@ const PROJECTS = {
     ],
     images: [
       { type: 'video', src: 'water_spray/deposition_animation.mp4', caption: 'Particle deposition animation — Lagrangian droplets injected at tyre contact patches dispersing through the turbulent truck wake' },
+      { file: 'domain.png', caption: 'Computational domain — full-scale truck geometry centred in a large rectangular wind-tunnel-style domain; inlet (red face) prescribes uniform 25 m/s freestream, outlet (brown) applies zero-gradient pressure' },
+      { file: 'mesh.png', caption: 'Cross-sectional mesh — polyhedral volume cells with prism layer refinement around the truck body and near-road region; local refinement captures boundary layer and tyre geometry' },
       { file: 'cfd1.png', caption: 'CFD result — velocity field and spray cloud in the near-wake; turbulent recirculation region visible immediately behind the trailer' },
-      { file: 'cfd2.png', caption: 'Lagrangian particle trajectories — droplets coloured by size, ejected from the rear tyre patches and dispersed by the wake vortex system' },
+      { file: 'cfd2.png', caption: 'Lagrangian particle trajectories — droplets coloured by residence time, ejected from the rear tyre patches and dispersed by the wake vortex system' },
       { file: 'plot1.png', caption: 'Transverse (Z) concentration profile at X = 1 m — two distinct peaks from left and right tyres; Gaussian mixture model (orange) vs. CFD (dashed blue)' },
       { file: 'plot2.png', caption: 'Transverse (Z) concentration profile at X = 10 m — plumes merged into a single distribution; surrogate model captures overall spread' },
     ],
