@@ -581,18 +581,19 @@ section:nth-child(even) { background: var(--bg-2); }
   filter: brightness(1);
 }
 
-/* Video on project card */
+/* Video overlay on project card — fades in over the static image on hover */
 .proj-card-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.5s var(--ease-out), filter 0.3s;
-  filter: brightness(0.85);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
 }
 .proj-card:hover .proj-card-video {
-  transform: scale(1.06);
-  filter: brightness(1);
+  opacity: 1;
 }
 
 /* Placeholder when image missing */
