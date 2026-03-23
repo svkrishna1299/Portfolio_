@@ -301,10 +301,8 @@ section:nth-child(even) { background: var(--bg-2); }
 
 /* ─── ABOUT ───────────────────────────────────────────────────── */
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 5rem;
-  align-items: start;
+  display: block;
+  max-width: 780px;
 }
 
 .about-text .lead {
@@ -1274,9 +1272,6 @@ footer .container {
   #hero { grid-template-columns: 1fr; padding-top: calc(var(--nav-h) + 4rem); }
   .hero-visual { display: none; }
   .br-desktop { display: none; }
-
-  .about-grid { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: repeat(4, 1fr); }
 
   .timeline { margin-left: 0; border-left: none; padding-left: 0; }
   .tl-meta { position: static; text-align: left; align-items: flex-start; flex-direction: row; width: auto; }
