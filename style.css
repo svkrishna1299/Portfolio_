@@ -581,19 +581,18 @@ section:nth-child(even) { background: var(--bg-2); }
   filter: brightness(1);
 }
 
-/* Video hover on project card */
+/* Video on project card */
 .proj-card-video {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-out);
-  pointer-events: none;
+  display: block;
+  transition: transform 0.5s var(--ease-out), filter 0.3s;
+  filter: brightness(0.85);
 }
 .proj-card:hover .proj-card-video {
-  opacity: 1;
+  transform: scale(1.06);
+  filter: brightness(1);
 }
 
 /* Placeholder when image missing */
