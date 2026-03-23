@@ -52,7 +52,7 @@ const PROJECTS = {
       { value: '200 kg/m²', label: 'Design wing loading' },
       { value: '1,200 NM', label: 'Mission range' },
     ],
-    report: 'hydrogen-bwb/Horizon_2035_Aircraft_Design_Report.pdf',
+    report: 'hydrogen-bwb/Aircraft_Design_Report__1_.pdf',
     images: [
       { file: 'Horizon_2035.png', caption: 'Horizon 2035 — rendered isometric view of the final BWB configuration with rear-mounted hydrogen turbofan engines and blended fuselage-wing body' },
       { file: 'cfd1.png',     caption: 'Top-view three-view drawing — planform geometry and wing layout' },
@@ -103,7 +103,7 @@ const PROJECTS = {
       { value: '1.86 N',  label: 'Reference thrust' },
       { value: 'FW-H',    label: 'Acoustic method' },
     ],
-    report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf',
+    report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf.pdf',
     images: [
       { file: 'cover.png',    caption: 'Boxprop CAD render — final blade design' },
       { file: 'geometry.png', caption: 'Blade geometry — span-wise cross-sections' },
@@ -130,7 +130,7 @@ const PROJECTS = {
       { value: '+11.4 nJ', label: 'Stroke moment loop (active)' },
       { value: '8 cycles', label: 'Wing beats simulated' },
     ],
-    report: 'fruit-fly/CFD_Simulation_Fruit_Fly_Wing_Beat.pdf',
+    report: null,
     images: [
       { file: 'cover.png',  caption: 'Velocity field — Drosophila wing at mid-stroke hover (STAR-CCM+)' },
       { file: 'cfd1.png',   caption: 'Overset computational mesh — background region with wing sub-domain and AMR interface' },
