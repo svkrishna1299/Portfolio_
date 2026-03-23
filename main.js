@@ -12,7 +12,7 @@
 
 const PROJECTS = {
   'truck-spray': {
-    title: 'Water Spray Behind Heavy Trucks',
+    title: 'Simulation and emulation of waterspray for validation of optical sensors',
     kicker: 'Multiphase CFD · 2024 – Present',
     period: '2024 – Present',
     type: 'CFD / Multiphase Flow',
