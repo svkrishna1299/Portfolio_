@@ -1179,26 +1179,29 @@ section:nth-child(even) { background: var(--bg-2); }
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.9rem 1.2rem;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
   border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text-2);
-  font-size: 0.9rem;
-  transition: border-color 0.2s, color 0.2s;
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  background: var(--bg-2);
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
 }
 .contact-link:hover {
   border-color: var(--amber);
+  background: var(--bg-3);
   color: var(--amber);
 }
 
 .cl-icon {
-  font-family: var(--ff-mono);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 1.1rem;
   color: var(--amber);
-  min-width: 20px;
+  min-width: 22px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .contact-card {
