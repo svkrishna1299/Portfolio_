@@ -79,6 +79,7 @@ const PROJECTS = {
     ],
     report: 'foiling-craft/AI_Hydrofoil_Project_Report.pdf',
     images: [
+      { type: 'video', src: 'foiling-craft/varying_velocity1Hz.mp4', caption: 'CFD simulation — NACA 0012 hydrofoil tracking 5,000 N lift under 1 Hz sinusoidal inflow; PD controller actuates angle of attack in real time' },
       { file: 'mesh.png',    caption: 'Computational mesh — NACA 0012 overset region with 15 prism layers and wake refinement (89,036 cells total)' },
       { file: 'domain.png',  caption: 'Computational domain — 6×6 m with velocity inlet, pressure outlet, and slip-wall boundaries; overset foil at domain centre' },
       { file: 'plot1.png',   caption: 'Core result — lift force tracking under 1 Hz sinusoidal inlet velocity: stable gain set (K_p=2.5×10⁻⁵, K_d=1.0×10⁻⁷) follows the 5,000 N setpoint' },
@@ -439,7 +440,7 @@ const openLightbox = (src, alt, caption) => {
 
 const openVideoLightbox = (src, caption) => {
   lightboxVideo.src = src;
-  lightboxVideo.style.display = '';
+  lightboxVideo.style.display = 'block';
   lightboxImg.style.display = 'none';
   lightboxImg.src = '';
   lightboxCap.textContent = caption || '';
@@ -450,8 +451,10 @@ const openVideoLightbox = (src, caption) => {
 const closeLightbox = () => {
   lightbox.classList.remove('open');
   lightboxImg.src = '';
+  lightboxImg.style.display = '';
   lightboxVideo.pause();
   lightboxVideo.removeAttribute('src');
+  lightboxVideo.style.display = 'none';
   lightboxCap.textContent = '';
 };
 
