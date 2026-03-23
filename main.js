@@ -361,7 +361,6 @@ function openProject(id) {
          onerror="this.style.display='none'" />
     <div class="po-header">
       <div class="po-title-block">
-        <div class="po-kicker">${p.kicker}</div>
         <h2>${p.title}</h2>
         <p class="po-description">${p.description}</p>
         ${reportHTML}
@@ -370,6 +369,7 @@ function openProject(id) {
         <div class="po-meta-row"><span class="pm-label">Period</span><span class="pm-value">${p.period}</span></div>
         <div class="po-meta-row"><span class="pm-label">Type</span><span class="pm-value">${p.type}</span></div>
         <div class="po-meta-row"><span class="pm-label">Institution</span><span class="pm-value">${p.institution}</span></div>
+        <div class="po-meta-row po-meta-tools"><span class="pm-label">Tools</span><div class="pm-tags">${toolsHTML}</div></div>
       </div>
     </div>
     <p class="po-section-title">Key results</p>
@@ -378,8 +378,6 @@ function openProject(id) {
     <p class="po-body-text">${p.methodology}</p>
     <p class="po-gallery-label">Figures — geometry · mesh · results</p>
     <div class="po-gallery">${galleryHTML}</div>
-    <p class="po-section-title">Tools &amp; methods</p>
-    <div class="po-tools">${toolsHTML}</div>
   `;
 
   // Lock body scroll
