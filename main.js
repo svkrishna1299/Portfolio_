@@ -68,7 +68,7 @@ const PROJECTS = {
     period: 'Apr – Jun 2024',
     type: 'CFD / Closed-Loop Control',
     institution: 'Chalmers University of Technology · Division of Marine Technology',
-    tools: ['STAR-CCM+', 'Implicit Unsteady RANS', 'SST k–ω', 'Overset mesh', 'Java macro (in-simulation PD logic)', 'Python (gain tuning)'],
+    tools: ['STAR-CCM+', 'Implicit Unsteady RANS', 'SST k–ω', 'Overset mesh', 'Java macro', 'Python', 'PD Control'],
     description: `Hydrofoil craft lift a vessel clear of the water to drastically cut drag and energy consumption — but in rough seas, an oscillating inflow makes maintaining a stable lift force genuinely hard. This project built and validated a <strong>real-time PD controller</strong> embedded directly inside a STAR-CCM+ CFD simulation via a Java macro, actively rotating a NACA 0012 hydrofoil to track a 5,000 N lift setpoint as a sinusoidal wave velocity field sweeps past it.<br><br>The controller logic runs <em>inside</em> the solver at every time step: reading the instantaneous lift, computing the error against the setpoint, and commanding a new angle of attack — all while the flow physics continue to evolve around the moving foil.`,
     methodology: `<strong>Mesh &amp; domain:</strong> A 6×6 m 2D domain was built around a NACA 0012 hydrofoil (Re ≈ 2.2×10⁶). An overset (chimera) region surrounds the foil and rotates freely without remeshing. The background mesh includes wake refinement toward the outlet. Fifteen prism layers resolve the boundary layer to y+ ≤ 1 (near-wall thickness 2.5×10⁻⁶ m), giving 89,036 total cells. Implicit Unsteady RANS with SST k–ω and All y+ wall treatment was used throughout.<br><br><strong>Controller implementation:</strong> The PD controller is coded as a Java macro that runs inside the STAR-CCM+ solver. At every time step it: (1) reads the instantaneous lift force, averaged over 5 consecutive steps to suppress numerical noise; (2) computes the error e(t) = L_target − L_ref; (3) applies the PD law to command a new angle of attack. A hard limiter of 2.5° per time step prevents physically unrealistic actuation. Gain values (K_p ~ 10⁻⁵, K_d ~ 10⁻⁷) were first swept analytically in a Python script across hundreds of combinations, narrowing the feasible space before embedding the best candidates into the macro for full CFD validation.<br><br><strong>Inflow conditions:</strong> V(t) = 10 + 2 sin(2πnt) m/s was applied at the inlet, with frequencies n = 0.5, 1, and 2 Hz tested. The stable gain set (K_p = 2.5×10⁻⁵, K_d = 1.0×10⁻⁷) tracked the 5,000 N setpoint under 1 Hz sinusoidal inflow; an unstable set confirmed the sensitivity of embedded real-time control to gain selection.`,
     results: [
@@ -119,7 +119,7 @@ const PROJECTS = {
     period: 'Nov 2023 – Jan 2024',
     type: 'CFD / Bio-inspired Unsteady Aerodynamics',
     institution: 'Chalmers University of Technology · University of Gothenburg',
-    tools: ['STAR-CCM+', 'Overset mesh', 'Implicit Unsteady RANS', 'k-omega SST', 'AMR', 'MATLAB (Fourier kinematics)', 'Cluster computing'],
+    tools: ['STAR-CCM+', 'Overset mesh', 'Implicit Unsteady RANS', 'k-ω SST', 'AMR', 'MATLAB'],
     description: `A fruit fly (<em>Drosophila melanogaster</em>) beats its wings 218 times per second, generating lift through mechanisms so complex that whether each degree of freedom is driven by muscle or emerges passively from fluid-structure interaction remains an open question in biomechanics.<br><br>This project simulated eight complete wing beat cycles of a rigid <em>Drosophila</em> wing in hovering flight using STAR-CCM+, with Fourier-series kinematics from literature driving all three degrees of freedom simultaneously. The core goal: use aerodynamic moment hysteresis loops to determine which motions are <strong>active</strong> (muscle-driven) and which are <strong>passive</strong> (aerodynamically induced).`,
     methodology: `Wing geometry (Perl et al.) was scaled to a 2.5 mm span. Kinematics were derived from Fourier series of the three Euler angles — stroke, pitch, elevation — at 218 Hz, discretised into 1,000 time steps per cycle. Root XYZ trajectory and all three angles were pre-computed in MATLAB and loaded as tabulated time-series into STAR-CCM+ via nested coordinate systems (Laboratory -> Trajectory -> Yaw -> Pitch -> Roll), driving overset region translation and superimposed rotations simultaneously.<br><br>The domain used a spherical overset region (boolean-subtracted wing) inside a background cube 8x the wing span, with stagnation inlet. Implicit Unsteady RANS with k-omega SST and AMR at the overset-background interface (Re ~100) was used. Eight cycles were run on a cluster; cycles 4-7 were analysed after flow stabilised. Pitching and stroke moments were monitored every time step and plotted as hysteresis loops — loop area and sign directly indicate energy exchange and hence active vs. passive nature of each DOF.`,
     results: [
@@ -145,7 +145,7 @@ const PROJECTS = {
     period: 'Jan – Nov 2025',
     type: 'Master\'s Thesis / CFD & Machine Learning',
     institution: 'Chalmers University of Technology · AFRY',
-    tools: ['STAR-CCM+', 'ANSA', 'Python', 'PyTorch', 'Fourier Neural Operator (FNO)', 'Soft Actor-Critic (SAC)', 'neuralop', 'NVIDIA H100 GPU'],
+    tools: ['STAR-CCM+', 'ANSA', 'Python', 'PyTorch', 'Fourier Neural Operator (FNO)', 'Soft Actor-Critic (SAC)', 'Reinforcement Learning'],
     description: `HVAC systems account for 20–40% of total building energy consumption, yet most still rely on simple rule-based PID controllers that cannot adapt to changing occupancy, weather, or user preferences. This Master's thesis — carried out in collaboration with <strong>AFRY</strong> — develops a complete physics-informed control framework that replaces repeated CFD solves with a fast neural surrogate, then trains a reinforcement learning agent to optimise the HVAC system in real time.<br><br>The result: a Soft Actor-Critic (SAC) controller that cuts annual energy consumption by <strong>35%</strong> compared to a PID baseline, while keeping thermal comfort violations below 2.3% of operating hours — all running at the speed needed for live closed-loop deployment.`,
     methodology: `A hospital room geometry provided by AFRY was simplified in ANSA and meshed in STAR-CCM+ with 1.8 million trimmed cells and adaptive mesh refinement (AMR) at critical gradient regions. 973 steady-state CFD simulations — covering summer, autumn, and winter boundary conditions with varying inlet temperature, mass-flow rate, radiator setpoint, and outdoor weather — were automated via a Java macro and run with the Realizable k–ε turbulence model. Each run extracted a 2,400-point spatial grid of temperature and velocity fields, creating a comprehensive training dataset.<br><br>A 3D Fourier Neural Operator (FNO) was trained on this dataset using PyTorch and the neuralop library — 256 hidden channels, 4 spectral layers, 20 Fourier modes per dimension, trained for 200 epochs on an NVIDIA H100 GPU. The FNO predicts full 3D temperature and velocity fields from boundary conditions in milliseconds, replacing the CFD solver in the control loop.<br><br>A Soft Actor-Critic (SAC) controller was coupled with the FNO surrogate. The actor and critic networks each use two hidden layers of 512 nodes. The reward function balances energy cost, temperature deviation from the 21°C setpoint, control oscillation, and occupant-zone comfort (thermal stratification, zone mean deviation, zone variance). The controller operates on a 20-minute step aligned with the room's thermal settling time, benchmarked against a PI controller over a full year of Swedish weather data.`,
     results: [
@@ -360,17 +360,17 @@ function openProject(id) {
     <img class="po-hero-img" src="${coverSrc}" alt="${p.title}"
          onerror="this.style.display='none'" />
     <div class="po-header">
-      <div class="po-title-block">
-        <h2>${p.title}</h2>
-        <p class="po-description">${p.description}</p>
-        ${reportHTML}
+      <h2>${p.title}</h2>
+      <div class="po-meta-strip">
+        <span class="pm-item"><span class="pm-label">Period</span><span class="pm-value">${p.period}</span></span>
+        <span class="po-meta-sep">·</span>
+        <span class="pm-item"><span class="pm-label">Type</span><span class="pm-value">${p.type}</span></span>
+        <span class="po-meta-sep">·</span>
+        <span class="pm-item"><span class="pm-label">Institution</span><span class="pm-value">${p.institution}</span></span>
       </div>
-      <div class="po-meta-block">
-        <div class="po-meta-row"><span class="pm-label">Period</span><span class="pm-value">${p.period}</span></div>
-        <div class="po-meta-row"><span class="pm-label">Type</span><span class="pm-value">${p.type}</span></div>
-        <div class="po-meta-row"><span class="pm-label">Institution</span><span class="pm-value">${p.institution}</span></div>
-        <div class="po-meta-row po-meta-tools"><span class="pm-label">Tools</span><div class="pm-tags">${toolsHTML}</div></div>
-      </div>
+      <p class="po-description">${p.description}</p>
+      <div class="po-meta-tools-row">${toolsHTML}</div>
+      ${reportHTML}
     </div>
     <p class="po-section-title">Key results</p>
     <ul class="po-results">${resultsHTML}</ul>
