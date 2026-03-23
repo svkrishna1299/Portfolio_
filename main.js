@@ -156,7 +156,7 @@ const PROJECTS = {
       { value: '>90%',     label: 'FNO predictions within 5% error' },
       { value: '973',      label: 'CFD training simulations' },
     ],
-    report: 'master-thesis/Dynamic_Control_of_HVAC_Attributes_Master_Thesis.pdf',
+    report: 'master-thesis/Master_Thesis_Repor.pdf',
     images: [
       { file: 'cover.png',  caption: 'Volume rendering of velocity flow field inside ventilated hospital room' },
       { file: 'cfd1.png',   caption: 'CFD steady-state temperature contour — buoyancy-driven stratification and radiator plume' },
