@@ -79,6 +79,7 @@ const PROJECTS = {
       { value: '89,036',     label: 'Mesh cell count' },
       { value: '≤1 Hz',      label: 'Stable wave frequency range' },
     ],
+    cover: 'foiling-craft/Coversample.png',
     report: 'foiling-craft/AI_Hydrofoil_Project_Report.pdf',
     images: [
       { type: 'video', src: 'foiling-craft/varying_velocity1Hz.mp4', caption: 'CFD simulation — NACA 0012 hydrofoil tracking 5,000 N lift under 1 Hz sinusoidal inflow; PD controller actuates angle of attack in real time' },
@@ -272,7 +273,7 @@ function openProject(id) {
 
   // Determine cover image — skip video entries, use first image file
   const firstImg = p.images.find(i => i.type !== 'video');
-  const coverSrc = firstImg ? `images/${id}/${firstImg.file}` : `images/${id}/cover.jpg`;
+  const coverSrc = p.cover || (firstImg ? `images/${id}/${firstImg.file}` : `images/${id}/cover.jpg`);
 
   const reportHTML = p.report
     ? `<a class="po-report-link" href="${p.report}" target="_blank" rel="noopener">
