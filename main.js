@@ -104,7 +104,7 @@ const PROJECTS = {
       { value: '1.86 N',  label: 'Reference thrust' },
       { value: 'FW-H',    label: 'Acoustic method' },
     ],
-    report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf.pdf',
+    report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf',
     images: [
       { file: 'cover.png',    caption: 'Boxprop CAD render — final blade design' },
       { file: 'geometry.png', caption: 'Blade geometry — span-wise cross-sections' },
