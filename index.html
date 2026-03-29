@@ -48,7 +48,7 @@
       </div>
       <div class="hero-actions fade-in">
         <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="Resume_120326.pdf" class="btn-outline" target="_blank">Download CV</a>
+        <a href="Raj_Gopalakrishna_CV.pdf" class="btn-outline" target="_blank">Download CV</a>
       </div>
     </div>
     <div class="hero-visual fade-in">
@@ -66,18 +66,20 @@
       <div class="about-grid">
         <div class="about-text">
           <p class="lead">
-            Mechanical Engineer with a Master's at Chalmers University of Technology, specialising in
-            computational fluid dynamics, turbulence modelling, and the intersection of high-fidelity simulation with machine learning.
+            Mechanical Engineer with a Master's in Applied Mechanics from Chalmers University of Technology,
+            focused on CFD, turbulence modelling, and surrogate-accelerated simulation workflows.
           </p>
           <p>
-            My work spans RANS/DES multiphase simulations of tire-water spray in heavy truck wakes, to developing
-            CFD-based surrogate models and reinforcement learning controllers for real-time HVAC optimisation.
-            I'm drawn to problems where physical insight and data-driven methods reinforce each other.
+            I have worked on RANS/DES multiphase spray simulations in heavy truck wakes, trained a Fourier Neural Operator
+            on 973 CFD cases to replace a full 3D solver in real-time HVAC control, and analysed aeroacoustic noise
+            on novel propeller geometries — all using HPC clusters with SLURM job scheduling and automated parameter sweeps
+            via STAR-CCM+ Java macros. My goal is to bring surrogate-accelerated CFD into production engineering workflows,
+            whether for real-time building climate control or spray prediction for autonomous driving sensors.
           </p>
           <p>
             Before Chalmers, I spent two years as Lead Product Engineer at Turbo Energy, developing actuators and
             e-recirculation valves through the full product lifecycle — hands-on product development experience
-            that shapes how I think about engineering problems.
+            that grounds how I approach simulation-driven engineering.
           </p>
         </div>
       </div>
@@ -210,7 +212,7 @@
               <span class="proj-card-type">CFD · Multiphase</span>
             </div>
             <h3>Simulation and emulation of waterspray for validation of optical sensors</h3>
-            <p>RANS/DES simulations with Lagrangian particle tracking to study tire-generated water spray and droplet dispersion in truck wakes.</p>
+            <p>RANS/DES simulations with Lagrangian particle tracking to characterise tire-generated water spray in truck wakes. Gaussian plume surrogate reproduces CFD concentration fields across 1–10 m wake range.</p>
             <div class="tag-row">
               <span class="tag">STAR-CCM+</span>
               <span class="tag">DES</span>
@@ -255,7 +257,7 @@
               <span class="proj-card-type">CFD · Control</span>
             </div>
             <h3>AI Control System for Foiling Craft</h3>
-            <p>Real-time PD controller embedded inside STAR-CCM+ via Java macro — actively rotating a NACA 0012 hydrofoil to maintain 5,000 N lift under sinusoidal wave inflow conditions.</p>
+            <p>Real-time PD controller embedded inside STAR-CCM+ via Java macro — actively rotating a NACA 0012 hydrofoil to track a 5,000 N lift setpoint under sinusoidal inflow up to 1 Hz.</p>
             <div class="tag-row">
               <span class="tag">URANS</span>
               <span class="tag">Overset mesh</span>
@@ -277,7 +279,7 @@
               <span class="proj-card-type">CFD · Acoustics</span>
             </div>
             <h3>Low-Noise Boxprop Propeller Analysis</h3>
-            <p>Designed a Boxprop using OptoProp and MATLAB; evaluated aerodynamic performance and noise versus a conventional propeller in STAR-CCM+.</p>
+            <p>Designed a Boxprop using OptoProp and MATLAB; aerodynamic and FW-H acoustic analysis in STAR-CCM+ against a conventional 4-blade propeller at 9,500 RPM. Reference prop: 76.2% efficiency, 1.86 N thrust.</p>
             <div class="tag-row">
               <span class="tag">OptoProp</span>
               <span class="tag">MATLAB</span>
@@ -299,7 +301,7 @@
               <span class="proj-card-type">CFD · Bio-mechanics</span>
             </div>
             <h3>CFD Simulation of Fruit Fly Wing Beat Motion</h3>
-            <p>Eight hovering wing beat cycles of a <em>Drosophila</em> wing simulated at 218 Hz — moment hysteresis loops reveal which degrees of freedom are active vs. passive.</p>
+            <p>Eight hovering wing beat cycles of a <em>Drosophila</em> wing simulated at 218 Hz — mean lift 5.76 µN (L/W ≈ 1). Moment hysteresis loops identify stroke as active (+11.4 nJ) and pitch as passive (−2.56 nJ).</p>
             <div class="tag-row">
               <span class="tag">Overset mesh</span>
               <span class="tag">FSI</span>
@@ -355,11 +357,13 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h4>Programming</h4>
+          <h4>Programming &amp; HPC</h4>
           <ul>
             <li>Python</li>
             <li>MATLAB</li>
-            <li>Java</li>
+            <li>Java (STAR-CCM+ macros)</li>
+            <li>SLURM / HPC clusters</li>
+            <li>Batch automation</li>
           </ul>
         </div>
         <div class="skill-group">
@@ -375,27 +379,13 @@
       </div>
 
       <div class="cert-section">
-        <h4>Certifications</h4>
+        <h4>Publications</h4>
         <div class="cert-list">
           <div class="cert-item">
             <span class="cert-icon">·</span>
             <div>
-              <div class="cert-name">Supervised Machine Learning: Regression &amp; Classification</div>
-              <div class="cert-org">DeepLearning.AI · Sep 2024</div>
-            </div>
-          </div>
-          <div class="cert-item">
-            <span class="cert-icon">·</span>
-            <div>
-              <div class="cert-name">Advanced Learning Algorithms</div>
-              <div class="cert-org">DeepLearning.AI · Oct 2024</div>
-            </div>
-          </div>
-          <div class="cert-item">
-            <span class="cert-icon">·</span>
-            <div>
-              <div class="cert-name">Computational Physics with Python</div>
-              <div class="cert-org">Udemy · Sep 2023</div>
+              <div class="cert-name">Dynamic Control of HVAC Attributes: Improving Energy Efficiency Using Machine Learning and CFD</div>
+              <div class="cert-org">Chalmers University of Technology · 2025 · <a href="https://odr.chalmers.se/items/3e0804d0-33a4-4d9b-9de5-f359c4e4ce8e" target="_blank" rel="noopener" style="color: var(--amber);">Chalmers Open Digital Repository</a></div>
             </div>
           </div>
         </div>
