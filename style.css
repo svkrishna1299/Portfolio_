@@ -1448,3 +1448,71 @@ body { font-size: 17px; }
 .skill-group li { font-size: 0.97rem; }
 .cert-org, .cc-label { font-size: 0.82rem; }
 footer .container { font-size: 0.85rem; }
+
+/* ─── TIMELINE: titles only, details on hover ─────────────────── */
+.timeline-item { z-index: 1; }
+.timeline-item:hover, .timeline-item:focus-within { z-index: 20; }
+.tl-card,
+.tl-card.featured {
+  position: relative;
+  margin: -0.7rem -0.8rem 0;
+  padding: 0.7rem 0.8rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: default;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.tl-card h3 { margin-bottom: 0.2rem; }
+.tl-org { margin-bottom: 0; }
+.tl-detail {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: -1px;
+  width: max(calc(100% + 2px), 440px);
+  padding: 0.4rem 1.1rem 1rem;
+  background: var(--bg-3);
+  border: 1px solid rgba(106,166,214,0.35);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 22px 44px rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+.timeline-item:nth-child(n+4) .tl-detail { left: auto; right: -1px; }
+.tl-card:hover,
+.tl-card:focus-within,
+.tl-card.featured:hover {
+  background: var(--bg-3);
+  border-color: rgba(106,166,214,0.35);
+  box-shadow: 0 22px 44px rgba(0,0,0,0.5);
+}
+.timeline-item:nth-child(n+4) .tl-card:hover,
+.timeline-item:nth-child(n+4) .tl-card:focus-within { border-radius: 6px 6px 0 6px; }
+.timeline-item:nth-child(-n+3) .tl-card:hover,
+.timeline-item:nth-child(-n+3) .tl-card:focus-within { border-radius: 6px 6px 6px 0; }
+.tl-card:hover .tl-detail,
+.tl-card:focus-within .tl-detail { opacity: 1; visibility: visible; transform: none; }
+.tl-detail .tl-points { margin-top: 0.4rem; }
+.tl-detail .tl-points li { font-size: 0.98rem; }
+.tl-card h3::after {
+  content: ' +';
+  color: var(--amber);
+  font-weight: 400;
+}
+.tl-card:hover h3::after, .tl-card:focus-within h3::after { content: ''; }
+
+/* Touch screens and narrow layouts: details always shown, no popover */
+@media (hover: none), (max-width: 1024px) {
+  .tl-card, .tl-card.featured { margin: 0; padding: 0; background: none; border: none; box-shadow: none; }
+  .tl-detail {
+    position: static; width: auto; padding: 0; margin-top: 0.6rem;
+    background: none; border: none; box-shadow: none;
+    opacity: 1; visibility: visible; transform: none;
+  }
+  .tl-card h3::after { content: ''; }
+}
+
+#experience { position: relative; z-index: 5; }
