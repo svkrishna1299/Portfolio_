@@ -1430,3 +1430,21 @@ body { font-size: 17px; }
 .hero-tag, .section-num, .tl-date, .tl-org, .tag, .pill, .proj-card-year, .proj-card-type,
 .skill-group h4, .cert-section h4, .cert-org, .cc-label, footer .container { letter-spacing: 0.03em; }
 @media (max-width: 640px) { .hero-name { white-space: normal; font-size: 2.2rem; } }
+
+/* ─── READABLE SMALL TEXT ─────────────────────────────────────── */
+.hero-tag { font-size: 1rem; }
+.pill { font-size: 0.95rem; padding: 5px 13px; }
+.btn-primary, .btn-outline { font-size: 0.95rem; }
+.section-num { font-size: 0.9rem; }
+.tl-date { font-size: 0.95rem; }
+.tl-org { font-size: 0.95rem; }
+.tl-card h3 { font-size: 1.15rem; }
+.tl-points li { font-size: 1.05rem; line-height: 1.5; }
+.timeline .tag { font-size: 0.9rem; }
+.tag { font-size: 0.8rem; }
+.proj-card-year, .proj-card-type { font-size: 0.82rem; }
+.proj-card-body p { font-size: 0.95rem; }
+.skill-group h4, .cert-section h4 { font-size: 0.85rem; }
+.skill-group li { font-size: 0.97rem; }
+.cert-org, .cc-label { font-size: 0.82rem; }
+footer .container { font-size: 0.85rem; }
