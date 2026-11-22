@@ -1328,6 +1328,15 @@ section { padding: 3.5rem 0; }
 .tl-card h3 { font-size: 0.98rem; line-height: 1.35; margin-bottom: 0.25rem; }
 .tl-org { color: var(--text-3); margin-bottom: 0.6rem; }
 .tl-card p { font-size: 0.84rem; line-height: 1.6; margin-bottom: 0.6rem; }
+.tl-points { list-style: none; margin: 0 0 0.7rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.tl-points li {
+  position: relative; padding-left: 0.95rem;
+  font-size: 0.84rem; line-height: 1.5; color: var(--text-2);
+}
+.tl-points li::before {
+  content: ''; position: absolute; left: 0; top: 0.62em;
+  width: 5px; height: 1px; background: var(--amber);
+}
 .timeline .tag-row { gap: 0.15rem 0.7rem; }
 .timeline .tag {
   background: none; border: none; padding: 0;
