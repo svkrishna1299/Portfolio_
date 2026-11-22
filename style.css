@@ -2,6 +2,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  --ff-body:    Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
   --bg:        #0d0f14;
   --bg-2:      #13161d;
   --bg-3:      #1a1e28;
@@ -18,9 +19,9 @@
 
   --nav-h: 60px;
 
-  --ff-display: 'DM Serif Display', Georgia, serif;
-  --ff-sans:    'Syne', system-ui, sans-serif;
-  --ff-mono:    'DM Mono', 'Courier New', monospace;
+  --ff-display: Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+  --ff-sans:    Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+  --ff-mono:    Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -815,7 +816,7 @@ section:nth-child(even) { background: var(--bg-2); }
   border: 1.5px solid var(--amber);
   color: var(--amber);
   border-radius: 6px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--ff-sans);
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -1415,3 +1416,17 @@ section { padding: 3.5rem 0; }
   .po-inner { padding: 1.2rem 1.2rem 4rem; }
   .po-hero-img { aspect-ratio: 16/9; }
 }
+
+/* ─── UNIFORM TYPOGRAPHY ──────────────────────────────────────── */
+body { font-size: 17px; }
+.hero-name {
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.15;
+}
+.hero-name em { font-style: normal; }
+.section-header h2 { font-weight: 700; font-size: 1.9rem; }
+.hero-tag, .section-num, .tl-date, .tl-org, .tag, .pill, .proj-card-year, .proj-card-type,
+.skill-group h4, .cert-section h4, .cert-org, .cc-label, footer .container { letter-spacing: 0.03em; }
+@media (max-width: 640px) { .hero-name { white-space: normal; font-size: 2.2rem; } }
