@@ -83,7 +83,7 @@ const PROJECTS = {
       { value: '4.1 m',    label: 'Spray deposition length' },
     ],
     images: [
-      { type: 'video', src: 'water_spray/deposition_animation.mp4', caption: 'Droplets thrown off the rear wheels, settling on the road behind the truck' },
+      { type: 'video', src: 'water_spray/deposition_web.mp4', caption: 'Droplets thrown off the rear wheels, settling on the road behind the truck' },
       { file: 'deck_domain.png',        caption: 'Full-scale truck in a wind-tunnel-style domain' },
       { file: 'mesh.png',               caption: 'Mesh section: refinement around the truck body, wheels and wake' },
       { file: 'deck_wake.png',          caption: 'Streamwise velocity in the wake with the spray cloud' },
@@ -329,7 +329,7 @@ function openProject(id) {
     const src = `images/${id}/${img.file}`;
     return `
       <figure class="po-gallery-item" data-src="${src}" data-caption="${img.caption}">
-        <img src="${src}" alt="${img.caption}"
+        <img src="${src}" alt="${img.caption}" loading="lazy"
              onerror="this.closest('figure').classList.add('img-placeholder')" />
         <div class="ph-filename">${img.file}</div>
         <div class="ph-label">${img.caption.split('—')[0].trim()}</div>
