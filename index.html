@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raj Gopalakrishna — CFD & ML Engineer</title>
-  <meta name="description" content="Mechanical Engineer specialising in CFD, turbulence modelling, and machine learning. Based in Göteborg, Sweden." />
+  <title>Raj Gopalakrishna — CFD Engineer</title>
+  <meta name="description" content="CFD engineer working across heat transfer, multiphase and turbulent flows, from geometry and mesh to validated results. Based in Göteborg, Sweden." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,15 +36,15 @@
       <div class="hero-tag fade-in">Göteborg, Sweden · MSc Applied Mechanics</div>
       <h1 class="hero-name fade-in">Raj<br><em>Gopalakrishna</em></h1>
       <p class="hero-sub fade-in">
-        CFD Engineer specializing in turbulence modelling and multiphase flows,<br class="br-desktop">
-        with hands-on experience applying machine learning to engineering simulations.
+        CFD engineer working across heat transfer, multiphase and turbulent flows.<br class="br-desktop">
+        I take a problem from geometry and mesh to validated results, and script the parts that repeat.
       </p>
       <div class="hero-pills fade-in">
+        <span class="pill">Conjugate Heat Transfer</span>
         <span class="pill">Turbulence Modelling</span>
-        <span class="pill">Machine Learning</span>
         <span class="pill">Multiphase Flow</span>
-        <span class="pill">Surrogate Modelling</span>
         <span class="pill">Aeroacoustics</span>
+        <span class="pill">Surrogate Modelling</span>
       </div>
       <div class="hero-actions fade-in">
         <a href="#projects" class="btn-primary">View Projects</a>
@@ -66,15 +66,16 @@
       <div class="about-grid">
         <div class="about-text">
           <p class="lead">
-            Mechanical Engineer with a Master's in Applied Mechanics from Chalmers University of Technology,
-            focused on CFD, turbulence modelling, and surrogate-accelerated simulation workflows.
+            CFD engineer with an MSc in Applied Mechanics from Chalmers University of Technology, working across
+            heat transfer, multiphase and turbulent flows.
           </p>
           <p>
-            I have worked on RANS/DES multiphase spray simulations in heavy truck wakes, trained a Fourier Neural Operator
-            on 973 CFD cases to replace a full 3D solver in real-time HVAC control, and analysed aeroacoustic noise
-            on novel propeller geometries — all using HPC clusters with SLURM job scheduling and automated parameter sweeps
-            via STAR-CCM+ Java macros. My goal is to bring surrogate-accelerated CFD into production engineering workflows,
-            whether for real-time building climate control or spray prediction for autonomous driving sensors.
+            I take a problem from geometry and mesh to validated results: DES of tyre spray behind heavy trucks with
+            Lagrangian droplets, buoyant conjugate heat transfer of a heat sink in OpenFOAM, MRF simulations of a
+            ventilated brake disc validated against spin-rig data, and sliding-mesh URANS with FW-H for propeller noise.
+            Whatever repeats, I script — STAR-CCM+ Java macros, Python and SLURM on HPC clusters — and on the larger
+            studies that went as far as neural-operator surrogates trained on hundreds of CFD runs. I now work on
+            vehicle thermal management at Volvo Group.
           </p>
           <p>
             Before Chalmers, I spent two years as Lead Product Engineer at Turbo Energy, developing actuators and
@@ -97,12 +98,29 @@
 
         <div class="timeline-item">
           <div class="tl-meta">
+            <span class="tl-date">2026 – Present</span>
+          </div>
+          <div class="tl-card">
+            <h3>Simulation Model Engineer — Thermal Management</h3>
+            <div class="tl-org">Volvo Group</div>
+            <p>Transient 3D CFD of the vehicle cabin and conjugate heat transfer of the engine underhood. Cut the runtime of the GT-SUITE model of the energy storage system (ESS) thermal circuit by 40% while staying within test data. Geometry and results are confidential.</p>
+            <div class="tag-row">
+              <span class="tag">GT-SUITE</span>
+              <span class="tag">STAR-CCM+</span>
+              <span class="tag">ANSA</span>
+              <span class="tag">Conjugate heat transfer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-meta">
             <span class="tl-date">Jan 2024 – Present</span>
           </div>
           <div class="tl-card">
             <h3>Research Assistant — Multiphase Flow &amp; Aerodynamics</h3>
             <div class="tl-org">Chalmers University of Technology</div>
-            <p>Performed RANS/DES simulations with Lagrangian particle tracking to study tire-generated water spray and droplet dispersion behind heavy trucks. Built Gaussian plume and Gaussian-mixture surrogate models to predict concentration fields matching CFD behaviour. End-to-end post-processing in Python including particle statistics, plume widths, centreline drift, and trajectory visualisation.</p>
+            <p>DES of heavy-truck wakes with Lagrangian tyre spray (13.8 M cells) in the SEVVOS project. Condensed the droplet cloud into a two-source Gaussian plume model with a measured deposition factor and ground reflection: lateral spread within 2% of CFD on average over 2–14 m. End-to-end post-processing in Python, from 1.6 M droplet parcels to mass-weighted plume statistics.</p>
             <div class="tag-row">
               <span class="tag">STAR-CCM+</span>
               <span class="tag">Python</span>
@@ -120,7 +138,7 @@
             <div class="featured-badge">Master Thesis</div>
             <h3>Master Thesis — ML-Driven Dynamic Control of HVAC Systems Using CFD</h3>
             <div class="tl-org">AFRY</div>
-            <p>Performed RANS and URANS 3D CFD simulations modelling indoor airflow and temperature distributions for HVAC systems. Automated CFD workflow for large-scale dataset generation. Developed a 3D Fourier Neural Operator surrogate model to predict full flow and temperature fields at drastically reduced computational cost. Built a Soft Actor–Critic reinforcement learning controller to optimise inlet temperature, radiator output, and supply mass flow in real time.</p>
+            <p>Buoyant RANS of a hospital room in STAR-CCM+, automated over 973 cases. Trained a 3D Fourier Neural Operator surrogate of the temperature and velocity fields (temperature error within ±0.5 °C on unseen cases). A Soft Actor–Critic controller trained on the surrogate used 35% less energy than PID over a year, trading a slightly looser setpoint for the saving.</p>
             <div class="tag-row">
               <span class="tag">STAR-CCM+</span>
               <span class="tag">ANSA</span>
@@ -187,14 +205,60 @@
           <div class="proj-card-body">
             <div class="proj-card-meta">
               <span class="proj-card-year">Jan – Nov 2025</span>
-              <span class="proj-card-type">Master's Thesis · CFD + ML</span>
+              <span class="proj-card-type">Master's Thesis · Buoyant RANS + RL control</span>
             </div>
             <h3>Dynamic Control of HVAC Attributes</h3>
-            <p>Improving Energy Efficiency Using Machine Learning and CFD — 973 CFD simulations trained a Fourier Neural Operator surrogate; a Soft Actor-Critic RL controller achieved 35% energy savings vs. a PID baseline over a full year of weather data.</p>
+            <p>Improving Energy Efficiency Using Machine Learning and CFD — 973 CFD simulations trained a Fourier Neural Operator surrogate (temperature within ±0.5 °C); a Soft Actor-Critic controller used 35% less energy than PID over a full year of weather data, at a slightly looser setpoint.</p>
             <div class="tag-row">
               <span class="tag">FNO Surrogate</span>
               <span class="tag">Reinforcement Learning</span>
               <span class="tag">STAR-CCM+</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-card" data-project="brake-disc">
+          <div class="proj-card-img proj-card-img--video">
+            <img src="images/brake-disc/cover.png" alt="Ventilated brake disc CFD" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <video class="proj-card-video" src="brake-disc/cover.mp4" muted loop playsinline preload="none"></video>
+            <div class="proj-card-overlay">
+              <span>View Project →</span>
+            </div>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-meta">
+              <span class="proj-card-year">2026</span>
+              <span class="proj-card-type">MRF RANS + FNO surrogate</span>
+            </div>
+            <h3>Ventilated Brake Disc Design Optimisation</h3>
+            <p>MRF CFD of a ventilated brake disc within 2% of spin-rig data; 275 automated designs trained a neural-operator surrogate (7.5 ms per prediction) and an RL optimiser searched 6,000 vane designs.</p>
+            <div class="tag-row">
+              <span class="tag">STAR-CCM+</span>
+              <span class="tag">Java macros</span>
+              <span class="tag">FNO</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-card" data-project="heat-sink">
+          <div class="proj-card-img proj-card-img--video">
+            <img src="images/heat-sink/cover.png" alt="Natural-convection heat sink CFD" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <video class="proj-card-video" src="heat-sink/cover.mp4" muted loop playsinline preload="none"></video>
+            <div class="proj-card-overlay">
+              <span>View Project →</span>
+            </div>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-meta">
+              <span class="proj-card-year">2026</span>
+              <span class="proj-card-type">Buoyant CHT in OpenFOAM</span>
+            </div>
+            <h3>Natural-Convection Heat Sink</h3>
+            <p>Conjugate heat transfer replication of da Silva et al. (2019) with chtMultiRegionFoam: Nusselt number within 4% of the paper on a scripted hex mesh with 12× fewer cells.</p>
+            <div class="tag-row">
+              <span class="tag">OpenFOAM</span>
+              <span class="tag">Laminar CHT</span>
+              <span class="tag">Python</span>
             </div>
           </div>
         </article>
@@ -209,10 +273,10 @@
           <div class="proj-card-body">
             <div class="proj-card-meta">
               <span class="proj-card-year">2024 – Present</span>
-              <span class="proj-card-type">CFD · Multiphase</span>
+              <span class="proj-card-type">DES + Lagrangian spray</span>
             </div>
-            <h3>Simulation and emulation of waterspray for validation of optical sensors</h3>
-            <p>RANS/DES simulations with Lagrangian particle tracking to characterise tire-generated water spray in truck wakes. Gaussian plume surrogate reproduces CFD concentration fields across 1–10 m wake range.</p>
+            <h3>Tyre Water Spray Behind Heavy Trucks</h3>
+            <p>DES of the truck wake with Lagrangian tyre spray, condensed into a two-source Gaussian plume model: lateral spread within 2% of CFD on average over 2–14 m behind the wheels.</p>
             <div class="tag-row">
               <span class="tag">STAR-CCM+</span>
               <span class="tag">DES</span>
@@ -254,10 +318,10 @@
           <div class="proj-card-body">
             <div class="proj-card-meta">
               <span class="proj-card-year">Apr – Jun 2024</span>
-              <span class="proj-card-type">CFD · Control</span>
+              <span class="proj-card-type">Overset URANS + PD control</span>
             </div>
             <h3>AI Control System for Foiling Craft</h3>
-            <p>Real-time PD controller embedded inside STAR-CCM+ via Java macro — actively rotating a NACA 0012 hydrofoil to track a 5,000 N lift setpoint under sinusoidal inflow up to 1 Hz.</p>
+            <p>Real-time PD controller embedded inside STAR-CCM+ via Java macro — rotating a NACA 0012 hydrofoil every time step to hold a 5,000 N lift setpoint in sinusoidal inflow at 0.5–2 Hz.</p>
             <div class="tag-row">
               <span class="tag">URANS</span>
               <span class="tag">Overset mesh</span>
@@ -276,10 +340,10 @@
           <div class="proj-card-body">
             <div class="proj-card-meta">
               <span class="proj-card-year">Jan – May 2024</span>
-              <span class="proj-card-type">CFD · Acoustics</span>
+              <span class="proj-card-type">Sliding-mesh URANS + FW-H</span>
             </div>
             <h3>Low-Noise Boxprop Propeller Analysis</h3>
-            <p>Designed a Boxprop using OptoProp and MATLAB; aerodynamic and FW-H acoustic analysis in STAR-CCM+ against a conventional 4-blade propeller at 9,500 RPM. Reference prop: 76.2% efficiency, 1.86 N thrust.</p>
+            <p>Tip-joined Boxprop vs a conventional 4-blade propeller at 9,500 RPM: MRF RANS for performance (70% vs 76.2% efficiency) and sliding-mesh URANS with FW-H for noise.</p>
             <div class="tag-row">
               <span class="tag">OptoProp</span>
               <span class="tag">MATLAB</span>
@@ -341,16 +405,17 @@
           <h4>Simulation</h4>
           <ul>
             <li>STAR-CCM+</li>
+            <li>OpenFOAM</li>
             <li>ANSYS Fluent</li>
-            <li>Abaqus</li>
-            <li>ANSYS Mechanical</li>
+            <li>GT-SUITE</li>
+            <li>Abaqus · ANSYS Mechanical</li>
           </ul>
         </div>
         <div class="skill-group">
           <h4>CAD &amp; Design</h4>
           <ul>
             <li>SolidWorks</li>
-            <li>ANSA</li>
+            <li>ANSA · SALOME</li>
             <li>OpenVSP</li>
             <li>Fusion-360</li>
             <li>CATIA</li>
@@ -369,10 +434,11 @@
         <div class="skill-group">
           <h4>Methods</h4>
           <ul>
-            <li>CFD / Turbulence Modelling</li>
-            <li>Neural Operators (FNO)</li>
-            <li>Reinforcement Learning</li>
-            <li>Surrogate Modelling</li>
+            <li>RANS · URANS · DES</li>
+            <li>Conjugate heat transfer</li>
+            <li>Multiphase: VOF, Lagrangian</li>
+            <li>FW-H aeroacoustics</li>
+            <li>Neural operators (FNO) · RL</li>
             <li>GD&amp;T / DFMA</li>
           </ul>
         </div>
