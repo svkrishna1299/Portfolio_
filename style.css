@@ -1257,6 +1257,81 @@ footer .container {
   transform: none;
 }
 
+/* ─── COMPACT LAYOUT (less scrolling) ─────────────────────────── */
+.container, #hero { max-width: 1320px; }
+
+/* Hero: content height instead of a full screen */
+#hero {
+  min-height: 0;
+  padding-top: calc(var(--nav-h) + 3.5rem);
+  padding-bottom: 3rem;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+}
+.hero-name { font-size: clamp(2.6rem, 4.2vw, 4rem); margin-bottom: 1rem; }
+.hero-sub { margin-bottom: 1.4rem; max-width: 640px; }
+.hero-pills { margin-bottom: 1.6rem; }
+.hero-photo { width: 240px; height: 240px; }
+
+/* Sections */
+section { padding: 3.5rem 0; }
+.section-header { margin-bottom: 1.8rem; }
+.section-header h2 { font-size: 2rem; }
+
+/* About: lead on the left, detail on the right */
+.about-grid { max-width: none; }
+.about-text {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 0.6rem 3rem;
+  align-items: start;
+}
+.about-text .lead { grid-row: span 2; margin-bottom: 0; }
+.about-text p { margin-bottom: 0; }
+
+/* Experience: card grid instead of a long vertical timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.2rem;
+  margin-left: 0;
+  border-left: none;
+}
+.timeline-item { padding-bottom: 0; display: block; }
+.timeline-item::before { display: none; }
+.tl-meta {
+  position: absolute;
+  top: 1.1rem; left: 1.4rem; right: auto;
+  width: auto;
+  align-items: flex-start;
+  z-index: 1;
+}
+.tl-card { margin-left: 0; height: 100%; padding: 2.4rem 1.4rem 1.25rem; }
+.tl-card p { font-size: 0.86rem; line-height: 1.6; margin-bottom: 0.8rem; }
+.tl-org { margin-bottom: 0.6rem; }
+
+/* Projects: four per row on wide screens */
+.projects-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+.proj-card-body { padding: 1rem 1.15rem 1.2rem; gap: 0.5rem; }
+.proj-card-body p { font-size: 0.83rem; line-height: 1.6; }
+.proj-card-meta { gap: 0.6rem; }
+.proj-card-type { text-align: right; }
+.proj-card-year { white-space: nowrap; }
+
+/* Skills and publications */
+.skills-grid { gap: 1rem; margin-bottom: 1.8rem; }
+.skill-group { padding: 1.1rem 1.2rem; }
+.skill-group ul { gap: 0.3rem; }
+.cert-section h4 { margin-bottom: 0.8rem; }
+.cert-list { padding-top: 0.8rem; }
+
+/* Contact: one row */
+.contact-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.contact-left .lead { margin-bottom: 1.2rem; }
+.contact-links { gap: 0.6rem; }
+.contact-link { padding: 0.7rem 1.1rem; }
+.cc-row { padding: 0.65rem 1.1rem; }
+
 /* ─── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   #hero { grid-template-columns: 1fr; padding-top: calc(var(--nav-h) + 4rem); }
@@ -1264,11 +1339,9 @@ footer .container {
   .hero-photo { width: 200px; height: 200px; }
   .br-desktop { display: none; }
 
-  .timeline { margin-left: 0; border-left: none; padding-left: 0; }
-  .tl-meta { position: static; text-align: left; align-items: flex-start; flex-direction: row; width: auto; }
-  .timeline-item { flex-direction: column; gap: 1rem; padding-bottom: 2.5rem; }
-  .timeline-item::before { display: none; }
-  .tl-card { margin-left: 0; }
+  #hero { padding-top: calc(var(--nav-h) + 2.5rem); }
+  .about-text { grid-template-columns: 1fr; }
+  .about-text .lead { grid-row: auto; }
 
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1294,6 +1367,7 @@ footer .container {
   .hamburger { display: flex; }
 
   .projects-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
 
