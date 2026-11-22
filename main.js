@@ -167,7 +167,9 @@ const PROJECTS = {
       { value: '633 Hz',  label: 'Noise peak at the blade passing frequency' },
     ],
     report: 'boxprop/Analysis_of_a_low_noise_Boxprop_propeller_report.pdf',
+    cover: 'images/boxprop/qcriterion_poster.jpg',
     images: [
+      { type: 'video', src: 'boxprop/qcriterion.mp4', caption: 'Sliding-mesh URANS of the conventional 4-blade propeller — tip vortices and wake visualised by the Q-criterion' },
       { file: 'cover.png',    caption: 'Boxprop CAD render — final blade design' },
       { file: 'geometry.png', caption: 'Blade geometry — span-wise cross-sections' },
       { file: 'mesh.png',     caption: 'CFD computational domain — rotating & static regions' },
