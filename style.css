@@ -1516,3 +1516,32 @@ footer .container { font-size: 0.85rem; }
 }
 
 #experience { position: relative; z-index: 5; }
+
+/* ─── TIMELINE HOVER CARD: one clean rectangle ────────────────── */
+@media (hover: hover) and (min-width: 1025px) {
+  .tl-card:hover,
+  .tl-card:focus-within,
+  .tl-card.featured:hover {
+    width: 440px;
+    border-color: rgba(106,166,214,0.35);
+    border-bottom-color: transparent;
+    border-radius: 6px 6px 0 0 !important;
+    box-shadow: none;
+  }
+  .timeline-item:nth-child(n+4) .tl-card:hover,
+  .timeline-item:nth-child(n+4) .tl-card:focus-within {
+    margin-left: calc(100% + 0.8rem - 440px);
+  }
+  .tl-detail,
+  .timeline-item:nth-child(n+4) .tl-detail {
+    top: 100%;
+    left: -1px;
+    right: -1px;
+    width: auto;
+    padding: 0.2rem 0.8rem 0.9rem;
+    border: 1px solid rgba(106,166,214,0.35);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 24px 40px rgba(0,0,0,0.5);
+  }
+}
